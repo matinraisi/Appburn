@@ -36,7 +36,7 @@
   </head>
   <body class="flex items-center justify-center min-h-screen">
     <div
-      class="w-full h-full flex flex-col items-center p-6 bg-white sm:rounded-none lg:rounded-xl lg:shadow-lg lg:max-w-md lg:mx-auto lg:my-8 lg:p-8"
+      class="w-full h-screen flex flex-col items-center px-6 py-12 bg-white sm:rounded-none lg:rounded-xl lg:shadow-lg lg:max-w-md lg:mx-auto lg:my-8 lg:p-8"
     >
       <!-- Top Bar -->
       <div class="w-full flex items-center justify-between mb-8">
@@ -73,9 +73,9 @@
           <input
             type="text"
             placeholder="شماره تماس"
-            class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right"
+            class="w-full pl-4 pr-12 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right"
           />
-          <div class="input-icon input-icon-left text-gray-400">
+          <div class="input-icon input-icon-right text-gray-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -98,9 +98,9 @@
           <input
             type="password"
             placeholder="رمز خود را وارد کنید"
-            class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right"
+            class="w-full pl-4 pr-12 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right"
           />
-          <div class="input-icon input-icon-left text-gray-400">
+          <div class="input-icon input-icon-right text-gray-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -119,11 +119,11 @@
         </div>
 
         <!-- Password Input (Error State Example) -->
-        <div class="relative">
+        <!-- <div class="relative">
           <input
             type="password"
             value="••••••••"
-            class="w-full pl-12 pr-12 py-3 border-2 border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-right"
+            class="w-full pl-12 pr-12 py-3 border-2 border-red-500 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500 text-right"
           />
           <div class="input-icon input-icon-left text-green-500">
             <svg
@@ -157,7 +157,7 @@
               />
             </svg>
           </div>
-        </div>
+        </div> -->
         <p class="text-red-500 text-sm text-right mt-1">
           رمز عبوری که وارد کرده‌اید اشتباه است!
         </p>
@@ -196,24 +196,24 @@
       <!-- Social Login Buttons -->
       <div class="w-full space-y-4 mb-8 social-btns">
         <button
-          class="w-full flex items-center justify-center border border-gray-300 py-3 px-6 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 transition duration-300 ease-in-out"
+          class="w-full flex items-center justify-center border border-gray-300 py-3 px-6 rounded-full font-bold text-gray-700 hover:bg-gray-50 transition duration-300 ease-in-out"
         >
-          <img src="./img/Google.svg" alt="Google Logo" class="w-6 h-6 ml-3" />
+          <img src="./img/Google.svg" alt="Google Logo" class="w-5 h-5 ml-3" />
           Sign in with Google
         </button>
         <button
-          class="w-full flex items-center justify-center border border-gray-300 py-3 px-6 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 transition duration-300 ease-in-out"
+          class="w-full flex items-center justify-center border border-gray-300 py-3 px-6 rounded-full font-bold text-gray-700 hover:bg-gray-50 transition duration-300 ease-in-out"
         >
-          <img src="img/Apple.svg" alt="Apple Logo" class="w-6 h-6 ml-3" />
+          <img src="img/Apple.svg" alt="Apple Logo" class="w-5 h-5 ml-3" />
           Sign in with Apple
         </button>
         <button
-          class="w-full flex items-center justify-center border border-gray-300 py-3 px-6 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 transition duration-300 ease-in-out"
+          class="w-full flex items-center justify-center border border-gray-300 py-3 px-6 rounded-full font-bold text-gray-700 hover:bg-gray-50 transition duration-300 ease-in-out"
         >
           <img
             src="./img/Facebook.svg"
             alt="Facebook Logo"
-            class="w-6 h-6 ml-3"
+            class="w-5 h-5 ml-3"
           />
           Sign in with Facebook
         </button>
