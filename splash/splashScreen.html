@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سلامت همراه - صفحه ورودی</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #e0f2f1; /* Light teal background for the whole page */
+      }
+      .container-center {
+        /* For desktop, center the content and add a matching background */
+        @apply lg:bg-white lg:rounded-xl lg:shadow-lg lg:max-w-md lg:mx-auto lg:my-8 lg:p-8;
+      }
+    </style>
+  </head>
+  <body class="flex items-center justify-center min-h-screen">
+    <div
+      class="w-full h-screen flex flex-col items-center bg-[#199A8E] justify-center px-6 pt-12 sm:rounded-none lg:rounded-xl lg:shadow-lg lg:max-w-md lg:mx-auto lg:my-8 lg:p-8"
+    >
+      <!-- Top Placeholder Image -->
+      <div class="flex-shrink-0 mt-8 mb-8 lg:mt-0">
+        <img
+          src="img/logo-white.svg"
+          alt="Logo Placeholder"
+          class="w-52 h-w-52 object-contain"
+        />
+      </div>
+    </div>
+  </body>
+</html>

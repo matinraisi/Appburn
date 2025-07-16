@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سلامت همراه - ورود</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #e0f2f1; /* Light teal background for the whole page */
+      }
+      .input-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        /* Adjust based on RTL */
+      }
+      .input-icon-left {
+        left: 1rem; /* For icons on the left in RTL */
+      }
+      .input-icon-right {
+        right: 1rem; /* For icons on the right in RTL */
+      }
+    </style>
+  </head>
+  <body class="flex items-center justify-center min-h-screen">
+    <div
+      class="w-full h-full flex flex-col items-center p-6 bg-white sm:rounded-none lg:rounded-xl lg:shadow-lg lg:max-w-md lg:mx-auto lg:my-8 lg:p-8"
+    >
+      <!-- Top Bar -->
+      <div class="w-full flex items-center justify-between mb-8">
+        <button
+          class="text-gray-600 hover:text-gray-800 transition duration-200"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+        <h1 class="text-xl font-bold text-gray-800">ورود</h1>
+        <div></div>
+        <!-- Spacer for centering title -->
+      </div>
+
+      <!-- Input Fields -->
+      <div class="w-full space-y-4 mb-6">
+        <!-- Phone Number Input -->
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="شماره تماس"
+            class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right"
+          />
+          <div class="input-icon input-icon-left text-gray-400">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.18.44l-1.417 1.914a4.995 4.995 0 01-1.706-0.535 4.995 4.995 0 01-1.706-0.535l-1.417-1.914c-.278-.385-.74-.55-1.18-.44L3.052 14.24c-.501.125-.852.575-.852 1.091V17.25a2.25 2.25 0 002.25 2.25h2.25a4.5 4.5 0 004.5-4.5V9a4.5 4.5 0 00-4.5-4.5H4.5A2.25 2.25 0 002.25 6.75z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Password Input (Normal State) -->
+        <div class="relative">
+          <input
+            type="password"
+            placeholder="رمز خود را وارد کنید"
+            class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right"
+          />
+          <div class="input-icon input-icon-left text-gray-400">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Password Input (Error State Example) -->
+        <div class="relative">
+          <input
+            type="password"
+            value="••••••••"
+            class="w-full pl-12 pr-12 py-3 border-2 border-red-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-right"
+          />
+          <div class="input-icon input-icon-left text-green-500">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
+          <div class="input-icon input-icon-right text-red-500">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
+              />
+            </svg>
+          </div>
+        </div>
+        <p class="text-red-500 text-sm text-right mt-1">
+          رمز عبوری که وارد کرده‌اید اشتباه است!
+        </p>
+
+        <a
+          href="#"
+          class="text-[#26a69a] text-sm font-medium text-right block hover:underline transition duration-200"
+          >رمز خود را فراموش کرده‌اید؟</a
+        >
+      </div>
+
+      <!-- Login Button -->
+      <button
+        class="w-full bg-[#26a69a] text-white py-3 px-6 rounded-lg font-semibold text-lg shadow-md hover:bg-[#208f83] transition duration-300 ease-in-out mb-6"
+      >
+        ورود
+      </button>
+
+      <!-- Register Link -->
+      <p class="text-gray-600 text-sm mb-6">
+        آیا حساب کاربری ندارید؟
+        <a
+          href="#"
+          class="text-[#26a69a] font-medium hover:underline transition duration-200"
+          >ثبت نام</a
+        >
+      </p>
+
+      <!-- OR Divider -->
+      <div class="relative w-full flex items-center justify-center mb-6">
+        <div class="flex-grow border-t border-gray-300"></div>
+        <span class="px-4 text-gray-500 text-sm">OR</span>
+        <div class="flex-grow border-t border-gray-300"></div>
+      </div>
+
+      <!-- Social Login Buttons -->
+      <div class="w-full space-y-4 mb-8">
+        <button
+          class="w-full flex items-center justify-center border border-gray-300 py-3 px-6 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 transition duration-300 ease-in-out"
+        >
+          <img
+            src="https://placehold.co/24x24/ffffff/000000?text=G"
+            alt="Google Logo"
+            class="w-6 h-6 ml-3"
+          />
+          Sign in with Google
+        </button>
+        <button
+          class="w-full flex items-center justify-center border border-gray-300 py-3 px-6 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 transition duration-300 ease-in-out"
+        >
+          <img
+            src="https://placehold.co/24x24/ffffff/000000?text=A"
+            alt="Apple Logo"
+            class="w-6 h-6 ml-3"
+          />
+          Sign in with Apple
+        </button>
+        <button
+          class="w-full flex items-center justify-center border border-gray-300 py-3 px-6 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 transition duration-300 ease-in-out"
+        >
+          <img
+            src="https://placehold.co/24x24/ffffff/000000?text=F"
+            alt="Facebook Logo"
+            class="w-6 h-6 ml-3"
+          />
+          Sign in with Facebook
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
