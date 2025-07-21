@@ -158,23 +158,8 @@
             alt="Profile Avatar"
             class="w-32 h-32 rounded-full border-4 border-white object-cover shadow-lg"
           />
-          <div
-            class="absolute bottom-0 left-0 bg-white rounded-full p-2 shadow-md"
-            style="transform: translate(-10%, 10%)"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="w-5 h-5 text-gray-600"
-            >
-              <path d="M12 9a3.75 3.75 0 100 7.5A3.75 3.75 0 0012 9z" />
-              <path
-                fill-rule="evenodd"
-                d="M9.344 3.071a49.52 49.52 0 015.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317a.75.75 0 00.98.62l5.063-1.454c1.011-.29 2.071.268 2.316 1.265.373 1.513 1.055 3.007 1.916 4.473.272.48.009 1.1-.689 1.1l-4.72.673a.75.75 0 00-.58.293l-1.923 2.999a49.356 49.356 0 010 5.198l1.923 2.999a.75.75 0 00.58.293l4.72.673c.698 0 .96-.62.689-1.1a48.855 48.855 0 01-1.916-4.473c-.245-.997.405-2.255 1.416-2.546l5.062-1.454a.75.75 0 00.98-.62l.82-1.317c.502-.805 1.364-1.338 2.331-1.39A49.52 49.52 0 0112 3.071zm0 0V2.25h5.312c.967.052 1.83.585 2.332 1.39l.821 1.317a.75.75 0 00.98.62l5.063-1.454c1.011-.29 2.071.268 2.316 1.265.373 1.513 1.055 3.007 1.916 4.473.272.48.009 1.1-.689 1.1l-4.72.673a.75.75 0 00-.58.293l-1.923 2.999a49.356 49.356 0 010 5.198l1.923 2.999a.75.75 0 00.58.293l4.72.673c.698 0 .96-.62.689-1.1a48.855 48.855 0 01-1.916-4.473c-.245-.997.405-2.255 1.416-2.546l5.062-1.454a.75.75 0 00.98-.62l.82-1.317c.502-.805 1.364-1.338 2.331-1.39A49.52 49.52 0 0112 3.071z"
-                clip-rule="evenodd"
-              />
-            </svg>
+          <div class="absolute bottom-4 right-4 rounded-full shadow-md">
+            <img src="./icon/camera.svg" class="w-full h-full" alt="" />
           </div>
         </div>
         <h2 class="text-xl font-bold mb-8">آیدا محمدی</h2>
@@ -258,7 +243,7 @@
             </a>
           </li>
           <li>
-            <a href="#" class="menu-item">
+            <button id="openModalBtn" class="menu-item w-full">
               <div class="flex items-center gap-4">
                 <span class="logout-icon-bg">
                   <svg
@@ -279,91 +264,78 @@
                 <span class="logout-text">خروج</span>
               </div>
               <img src="./icon/Arrow-Right.svg" alt="" />
-            </a>
+            </button>
           </li>
         </ul>
       </div>
     </div>
 
     <div
-      class="fixed left-1/2 transform -translate-x-1/2 bottom-0 w-full lg:max-w-md lg:mx-auto bg-white border-t border-gray-200 p-4 flex justify-around items-center shadow-lg"
+      class="fixed left-1/2 transform -translate-x-1/2 bottom-0 w-full lg:max-w-md lg:mx-auto bg-white border-t border-gray-200 p-4 flex flex-row-reverse justify-around items-center shadow-lg"
     >
-      <button
-        class="flex flex-col items-center text-gray-500 hover:text-[#26a69a] transition duration-200"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V9.75M10.5 18.75h3a.75.75 0 00.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75v4.5c0 .414.336.75.75.75z"
-          />
-        </svg>
-        <span class="text-xs mt-1">خانه</span>
-      </button>
-      <button
-        class="flex flex-col items-center text-gray-500 hover:text-[#26a69a] transition duration-200"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 17.25V6.75m18 0A2.25 2.25 0 0019.5 4.5H4.5A2.25 2.25 0 002.25 6.75m18 0v.75m-18-.75V6.75m0 0a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021.75 6.75m0 0v-1.5m0 1.5a2.25 2.25 0 00-2.25-2.25H4.5A2.25 2.25 0 002.25 6.75m0 0v1.5m0 0A2.25 2.25 0 004.5 9h15.75a2.25 2.25 0 002.25-2.25m-18 0a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021.75 6.75m0 0v-1.5"
-          />
-        </svg>
-        <span class="text-xs mt-1">پیام‌ها</span>
-      </button>
-      <button
-        class="flex flex-col items-center text-gray-500 hover:text-[#26a69a] transition duration-200"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15.75h.008v.008H12v-.008z"
-          />
-        </svg>
-        <span class="text-xs mt-1">تقویم</span>
-      </button>
-      <button
-        class="flex flex-col items-center bottom-nav-icon-active transition duration-200"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-        </svg>
-        <span class="text-xs mt-1">پروفایل</span>
-      </button>
+      <img src="./icon/nav/Home.svg" alt="" />
+      <img src="./icon/nav/Message.svg" alt="" />
+      <img src="./icon/nav/Calendar.svg" alt="" />
+      <img src="./icon/nav/Profile.svg" alt="" />
     </div>
+    <!-- Modal -->
+    <div
+      id="logoutModal"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50"
+    >
+      <div
+        class="bg-white flex flex-col items-center justify-center gap-5 rounded-2xl p-6 max-w-80 h-96 text-center relative"
+        id="modalContent"
+      >
+        <!-- Placeholder Image -->
+        <img
+          src="./icon/exit.svg"
+          alt="logout icon"
+          class="mx-auto mb-4 w-14 h-14"
+        />
+
+        <!-- Title -->
+        <p class="font-bold text-lg mb-4">
+          آیا مطمئن هستید که از حساب کاربری خود خارج می‌شوید؟
+        </p>
+
+        <!-- Action Buttons -->
+        <button
+          id="confirmLogout"
+          class="w-full py-3 rounded-xl text-white font-bold mb-3"
+          style="background: linear-gradient(90deg, #52d1c6 0%, #30ada2 100%)"
+        >
+          خروج
+        </button>
+
+        <button id="cancelLogout" class="w-full py-2 text-[#30ADA2] font-bold">
+          کنسل
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const openModalBtn = document.getElementById("openModalBtn");
+      const logoutModal = document.getElementById("logoutModal");
+      const modalContent = document.getElementById("modalContent");
+      const cancelLogout = document.getElementById("cancelLogout");
+
+      // Open modal
+      openModalBtn.addEventListener("click", () => {
+        logoutModal.classList.remove("hidden");
+      });
+
+      // Close modal on cancel button click
+      cancelLogout.addEventListener("click", () => {
+        logoutModal.classList.add("hidden");
+      });
+
+      // Close modal when clicking outside content
+      logoutModal.addEventListener("click", (event) => {
+        if (!modalContent.contains(event.target)) {
+          logoutModal.classList.add("hidden");
+        }
+      });
+    </script>
   </body>
 </html>
