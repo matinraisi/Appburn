@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سلامت همراه - داشبورد</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      @import url("https://v1.fontapi.ir/css/Yekan");
+
+      body {
+        font-family: "Yekan", sans-serif;
+        /* Light teal background for the whole page */
+        background: linear-gradient(
+          90deg,
+          #52d1c6 0%,
+          #30ada2 100%
+        ); /* Turquoise/teal background */
+        min-height: 100vh;
+      }
+      .header-bg {
+        position: relative;
+        overflow: hidden;
+      }
+      .header-bg::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+            circle at 10% 20%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 80%,
+            rgba(255, 255, 255, 0.05) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+      }
+      /* Custom styles for the quick action buttons within the header */
+      .quick-action-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #4a5568; /* Gray-700 */
+        font-size: 0.875rem; /* text-sm */
+        font-weight: 500; /* font-medium */
+      }
+      .quick-action-icon {
+        background-color: #e0f2f1; /* Light teal for icon background */
+        border-radius: 9999px; /* rounded-full */
+        padding: 0.75rem; /* p-3 */
+        margin-bottom: 0.5rem; /* mb-2 */
+        color: #26a69a; /* Teal-600 */
+      }
+      /* Specific styles for menu items */
+      .menu-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem; /* p-4 */
+        border-radius: 0.5rem; /* rounded-lg */
+        transition: background-color 200ms ease-in-out; /* transition duration-200 */
+      }
+      .menu-item:hover {
+        background-color: #f9fafb; /* hover:bg-gray-50 */
+      }
+      .menu-item-text {
+        color: #101623; /* Custom dark color from image */
+        font-weight: 700; /* font-bold */
+        font-size: 1rem; /* text-base */
+      }
+      .menu-item-icon-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem; /* gap-4 */
+      }
+      .menu-item-icon {
+        width: 2.5rem; /* w-10 */
+        height: 2.5rem; /* h-10 */
+      }
+      /* Specific style for logout icon background */
+      .logout-icon-bg {
+        background-color: #fee2e2; /* red-100 */
+        color: #dc2626; /* red-600 */
+        width: 2.5rem; /* w-10 */
+        height: 2.5rem; /* h-10 */
+        border-radius: 9999px; /* rounded-full */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .logout-text {
+        color: #dc2626; /* red-600 */
+        font-weight: 700; /* font-bold */
+        font-size: 1rem; /* text-base */
+      }
+      .bottom-nav-icon-active {
+        color: #26a69a;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <div
+      class="flex-grow w-full lg:max-w-md lg:mx-auto lg:my-8 rounded-xl lg:shadow-lg overflow-hidden"
+    >
+      <div
+        class="header-bg min-h-[30rem] text-white p-6 pb-20 flex flex-col items-center relative z-10"
+      >
+        <img
+          src="./icon/bg-svg.svg"
+          class="absolute right-0 top-0 z-5"
+          alt=""
+        />
+        <div class="w-full flex justify-between items-center mb-6">
+          <button class="text-white hover:opacity-80 transition duration-200">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              vie.pt-16wBox="0 0 24 24"
+              stroke-width="2.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
+              />
+            </svg>
+          </button>
+          <button class="text-white hover:opacity-80 transition duration-200">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="mb-4 relative">
+          <img
+            src="./img/image 6.png"
+            alt="Profile Avatar"
+            class="w-32 h-32 rounded-full border-4 border-white object-cover shadow-lg"
+          />
+          <div
+            class="absolute bottom-0 left-0 bg-white rounded-full p-2 shadow-md"
+            style="transform: translate(-10%, 10%)"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-5 h-5 text-gray-600"
+            >
+              <path d="M12 9a3.75 3.75 0 100 7.5A3.75 3.75 0 0012 9z" />
+              <path
+                fill-rule="evenodd"
+                d="M9.344 3.071a49.52 49.52 0 015.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317a.75.75 0 00.98.62l5.063-1.454c1.011-.29 2.071.268 2.316 1.265.373 1.513 1.055 3.007 1.916 4.473.272.48.009 1.1-.689 1.1l-4.72.673a.75.75 0 00-.58.293l-1.923 2.999a49.356 49.356 0 010 5.198l1.923 2.999a.75.75 0 00.58.293l4.72.673c.698 0 .96-.62.689-1.1a48.855 48.855 0 01-1.916-4.473c-.245-.997.405-2.255 1.416-2.546l5.062-1.454a.75.75 0 00.98-.62l.82-1.317c.502-.805 1.364-1.338 2.331-1.39A49.52 49.52 0 0112 3.071zm0 0V2.25h5.312c.967.052 1.83.585 2.332 1.39l.821 1.317a.75.75 0 00.98.62l5.063-1.454c1.011-.29 2.071.268 2.316 1.265.373 1.513 1.055 3.007 1.916 4.473.272.48.009 1.1-.689 1.1l-4.72.673a.75.75 0 00-.58.293l-1.923 2.999a49.356 49.356 0 010 5.198l1.923 2.999a.75.75 0 00.58.293l4.72.673c.698 0 .96-.62.689-1.1a48.855 48.855 0 01-1.916-4.473c-.245-.997.405-2.255 1.416-2.546l5.062-1.454a.75.75 0 00.98-.62l.82-1.317c.502-.805 1.364-1.338 2.331-1.39A49.52 49.52 0 0112 3.071z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+        <h2 class="text-xl font-bold mb-8">آیدا محمدی</h2>
+
+        <div class="absolute bottom-16 w-full px-6">
+          <div
+            class="flex flex-row-reverse bg-transparent justify-around items-center rounded-2xl p-4 text-white"
+          >
+            <div class="flex flex-col items-center gap-2 text-center">
+              <img src="./icon/Heartbeat.svg" alt="heart" class="w-10 h-10" />
+              <span class="text-base text-white/80">ضربان قلب</span>
+              <span class="font-bold text-sm">۲۱۵ ضربه در دقیقه</span>
+            </div>
+
+            <div class="w-px h-14 bg-white/50"></div>
+
+            <div class="flex flex-col items-center gap-2 text-center">
+              <img src="./icon/Fire.svg" alt="calories" class="w-10 h-10" />
+              <span class="text-base text-white/80">کالری</span>
+              <span class="font-bold text-sm">۷۵۶ کالری</span>
+            </div>
+
+            <div class="w-px h-14 bg-white/50"></div>
+
+            <div class="flex flex-col items-center gap-2 text-center">
+              <img src="./icon/Barbell.svg" alt="weight" class="w-10 h-10" />
+              <span class="text-base text-white/80">وزن</span>
+              <span class="font-bold text-sm">۱۰۳ پوند</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="bg-white p-6 pb-20 -mt-12 relative z-0 rounded-tl-2xl rounded-tr-2xl"
+      >
+        <ul class="space-y-4">
+          <li>
+            <a href="#" class="menu-item">
+              <div class="menu-item-icon-container">
+                <img class="menu-item-icon" src="./icon/profile.svg" alt="" />
+                <span class="menu-item-text">تکمیل پروفایل</span>
+              </div>
+              <img src="./icon/Arrow-Right.svg" alt="" />
+            </a>
+          </li>
+          <li>
+            <a href="#" class="menu-item">
+              <div class="menu-item-icon-container">
+                <img class="menu-item-icon" src="./icon/report.svg" alt="" />
+                <span class="menu-item-text">ثبت گزارش</span>
+              </div>
+              <img src="./icon/Arrow-Right.svg" alt="" />
+            </a>
+          </li>
+          <li>
+            <a href="#" class="menu-item">
+              <div class="menu-item-icon-container">
+                <img class="menu-item-icon" src="./icon/message.svg" alt="" />
+                <span class="menu-item-text">ارتباط با روانشناسان بالینی</span>
+              </div>
+              <img src="./icon/Arrow-Right.svg" alt="" />
+            </a>
+          </li>
+          <li>
+            <a href="#" class="menu-item">
+              <div class="menu-item-icon-container">
+                <img class="menu-item-icon" src="./icon/message.svg" alt="" />
+                <span class="menu-item-text">ارتباط با کارشناسان زخم</span>
+              </div>
+              <img src="./icon/Arrow-Right.svg" alt="" />
+            </a>
+          </li>
+          <li>
+            <a href="#" class="menu-item">
+              <div class="menu-item-icon-container">
+                <img class="menu-item-icon" src="./icon/video.svg" alt="" />
+                <span class="menu-item-text">کلیپ آموزشی</span>
+              </div>
+              <img src="./icon/Arrow-Right.svg" alt="" />
+            </a>
+          </li>
+          <li>
+            <a href="#" class="menu-item">
+              <div class="flex items-center gap-4">
+                <span class="logout-icon-bg">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+                    />
+                  </svg>
+                </span>
+                <span class="logout-text">خروج</span>
+              </div>
+              <img src="./icon/Arrow-Right.svg" alt="" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="fixed left-1/2 transform -translate-x-1/2 bottom-0 w-full lg:max-w-md lg:mx-auto bg-white border-t border-gray-200 p-4 flex justify-around items-center shadow-lg"
+    >
+      <button
+        class="flex flex-col items-center text-gray-500 hover:text-[#26a69a] transition duration-200"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V9.75M10.5 18.75h3a.75.75 0 00.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75v4.5c0 .414.336.75.75.75z"
+          />
+        </svg>
+        <span class="text-xs mt-1">خانه</span>
+      </button>
+      <button
+        class="flex flex-col items-center text-gray-500 hover:text-[#26a69a] transition duration-200"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 17.25V6.75m18 0A2.25 2.25 0 0019.5 4.5H4.5A2.25 2.25 0 002.25 6.75m18 0v.75m-18-.75V6.75m0 0a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021.75 6.75m0 0v-1.5m0 1.5a2.25 2.25 0 00-2.25-2.25H4.5A2.25 2.25 0 002.25 6.75m0 0v1.5m0 0A2.25 2.25 0 004.5 9h15.75a2.25 2.25 0 002.25-2.25m-18 0a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021.75 6.75m0 0v-1.5"
+          />
+        </svg>
+        <span class="text-xs mt-1">پیام‌ها</span>
+      </button>
+      <button
+        class="flex flex-col items-center text-gray-500 hover:text-[#26a69a] transition duration-200"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15.75h.008v.008H12v-.008z"
+          />
+        </svg>
+        <span class="text-xs mt-1">تقویم</span>
+      </button>
+      <button
+        class="flex flex-col items-center bottom-nav-icon-active transition duration-200"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+          />
+        </svg>
+        <span class="text-xs mt-1">پروفایل</span>
+      </button>
+    </div>
+  </body>
+</html>
