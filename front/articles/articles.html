@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سلامت همراه - مقالات و اخبار</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      @import url("https://v1.fontapi.ir/css/Yekan");
+      body {
+        font-family: "Yekan", sans-serif;
+        background-color: #e0f2f1; /* Light teal background for the whole page */
+      }
+      /* Custom scrollbar styling for better appearance */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none; /* For Chrome, Safari, and Opera */
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none; /* For Internet Explorer and Edge */
+        scrollbar-width: none; /* For Firefox */
+      }
+      .article-card,
+      .category-button-card {
+        scroll-snap-align: start; /* For smooth snapping in sliders */
+        flex-shrink: 0; /* Prevent cards/buttons from shrinking */
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <div
+      class="flex-grow w-full lg:max-w-md lg:mx-auto lg:my-8 lg:rounded-xl lg:shadow-lg bg-white overflow-hidden"
+    >
+      <!-- Top Bar -->
+      <div
+        class="w-full flex flex-row-reverse items-center justify-between p-6 pb-4 border-b border-gray-200"
+      >
+        <button
+          class="text-gray-600 hover:text-gray-800 transition duration-200"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+        <h1 class="text-xl font-bold text-gray-800">مقالات و اخبار</h1>
+        <button
+          class="text-gray-600 hover:text-gray-800 transition duration-200"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="p-6 pt-4">
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="سرچ مقالات، اخبار و..."
+            class="w-full pr-12 pl-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right"
+          />
+          <div
+            class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Buttons (Slider) -->
+      <div
+        id="categoryButtonsSlider"
+        class="px-6 pb-6 flex gap-4 overflow-x-auto no-scrollbar space-x-2 pb-2 scroll-snap-x"
+      >
+        <button
+          class="category-button-card flex-1 bg-[#26a69a] text-white py-2 px-4 rounded-lg font-medium text-sm shadow-md hover:bg-[#208f83] transition duration-300 ease-in-out"
+        >
+          سوختگی
+        </button>
+        <button
+          class="category-button-card flex-1 bg-[#26a69a] text-white py-2 px-4 rounded-lg font-medium text-sm shadow-md hover:bg-[#208f83] transition duration-300 ease-in-out"
+        >
+          پیشگیری
+        </button>
+        <button
+          class="category-button-card flex-1 bg-[#26a69a] text-white py-2 px-4 rounded-lg font-medium text-sm shadow-md hover:bg-[#208f83] transition duration-300 ease-in-out"
+        >
+          ورزش
+        </button>
+        <button
+          class="category-button-card flex-1 bg-[#26a69a] text-white py-2 px-4 rounded-lg font-medium text-sm shadow-md hover:bg-[#208f83] transition duration-300 ease-in-out"
+        >
+          سلامتی
+        </button>
+        <button
+          class="category-button-card flex-1 bg-[#26a69a] text-white py-2 px-4 rounded-lg font-medium text-sm shadow-md hover:bg-[#208f83] transition duration-300 ease-in-out"
+        >
+          تغذیه
+        </button>
+      </div>
+
+      <!-- Popular Articles Section (Slider) -->
+
+      <!-- Trending Articles Section (Slider) -->
+      <div class="px-6 mb-8">
+        <h2 class="text-lg font-bold text-gray-800 mb-4 text-right">
+          مقالات پرطرفدار
+        </h2>
+        <div
+          id="trendingArticlesSlider"
+          class="flex gap-4 overflow-x-auto no-scrollbar space-x-4 pb-2 scroll-snap-x"
+        >
+          <!-- Article Card 1 -->
+          <div
+            class="article-card w-64 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+          >
+            <div class="relative">
+              <img
+                src="https://placehold.co/256x144/e0f2f1/26a69a?text=مقاله+۴"
+                alt="Article Image"
+                class="w-full h-36 object-cover"
+              />
+              <button
+                class="absolute top-2 left-2 bg-white p-2 rounded-full shadow-md text-gray-600"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21.75A2.25 2.25 0 0115.5 24h-7.5A2.25 2.25 0 015.5 21.75V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="p-4 text-right">
+              <span
+                class="inline-block bg-[#e0f2f1] text-[#26a69a] text-xs font-semibold px-2.5 py-0.5 rounded-full mb-2"
+                >سوختگی</span
+              >
+              <h3 class="text-base font-semibold text-gray-800 mb-2">
+                کپسول های انفرادی کاندیدا از زخم های سوختگی می توانند به یک
+                ماتریکس پوستی تقسیم شوند
+              </h3>
+              <p class="text-xs text-gray-500">
+                ۱۲ خرداد ۱۴۰۴ • ۵ دقیقه مطالعه
+              </p>
+            </div>
+          </div>
+          <!-- Article Card 2 -->
+          <div
+            class="article-card w-64 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+          >
+            <div class="relative">
+              <img
+                src="https://placehold.co/256x144/e0f2f1/26a69a?text=مقاله+۵"
+                alt="Article Image"
+                class="w-full h-36 object-cover"
+              />
+              <button
+                class="absolute top-2 left-2 bg-white p-2 rounded-full shadow-md text-gray-600"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21.75A2.25 2.25 0 0115.5 24h-7.5A2.25 2.25 0 015.5 21.75V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="p-4 text-right">
+              <span
+                class="inline-block bg-[#e0f2f1] text-[#26a69a] text-xs font-semibold px-2.5 py-0.5 rounded-full mb-2"
+                >پیشگیری</span
+              >
+              <h3 class="text-base font-semibold text-gray-800 mb-2">
+                اهمیت تغذیه در پیشگیری و درمان زخم‌ها
+              </h3>
+              <p class="text-xs text-gray-500">
+                ۱۴ خرداد ۱۴۰۴ • ۸ دقیقه مطالعه
+              </p>
+            </div>
+          </div>
+          <!-- Article Card 3 -->
+          <div
+            class="article-card w-64 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+          >
+            <div class="relative">
+              <img
+                src="https://placehold.co/256x144/e0f2f1/26a69a?text=مقاله+۶"
+                alt="Article Image"
+                class="w-full h-36 object-cover"
+              />
+              <button
+                class="absolute top-2 left-2 bg-white p-2 rounded-full shadow-md text-gray-600"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21.75A2.25 2.25 0 0115.5 24h-7.5A2.25 2.25 0 015.5 21.75V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="p-4 text-right">
+              <span
+                class="inline-block bg-[#e0f2f1] text-[#26a69a] text-xs font-semibold px-2.5 py-0.5 rounded-full mb-2"
+                >ورزش</span
+              >
+              <h3 class="text-base font-semibold text-gray-800 mb-2">
+                تمرینات ورزشی مناسب برای بهبود زخم‌های مزمن
+              </h3>
+              <p class="text-xs text-gray-500">۹ خرداد ۱۴۰۴ • ۶ دقیقه مطالعه</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Articles Section -->
+      <div class="px-6 pb-6">
+        <h2 class="text-lg font-bold text-gray-800 mb-4 text-right">
+          مقالات مرتبط
+        </h2>
+        <div class="space-y-4">
+          <!-- Related Article Card 1 -->
+          <div
+            class="flex items-center bg-white rounded-xl shadow-sm p-4 border border-gray-200"
+          >
+            <div class="flex-shrink-0 ml-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 text-gray-500"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 12.76c0 1.6.14 3.19.42 4.77a8.98 8.98 0 003.885 3.885c1.58.28 3.17.42 4.77.42s3.19-.14 4.77-.42a8.98 8.98 0 003.885-3.885c.28-1.58.42-3.17.42-4.77s-.14-3.19-.42-4.77a8.98 8.98 0 00-3.885-3.885C16.19 2.14 14.6 2 13 2s-3.19.14-4.77.42A8.98 8.98 0 004.345 6.305c-.28 1.58-.42 3.17-.42 4.77V12h.008v.008H2.25zM12 6.75a.75.75 0 100-1.5.75.75 0 000 1.5zM12 11.25a.75.75 0 100-1.5.75.75 0 000 1.5zM12 15.75a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                />
+              </svg>
+            </div>
+            <div class="flex-grow text-right">
+              <h3 class="text-base font-semibold text-gray-800 mb-1">
+                انواع سوختگی را چگونه درمان کنیم؟
+              </h3>
+              <p class="text-xs text-gray-500">۱۲ خرداد ۱۴۰۴ • ۵ دقیقه</p>
+            </div>
+            <div class="flex-shrink-0 mr-4">
+              <img
+                src="https://placehold.co/60x60/e0f2f1/26a69a?text=تصویر"
+                alt="Related Article Image"
+                class="w-16 h-16 rounded-lg object-cover"
+              />
+            </div>
+          </div>
+          <!-- Related Article Card 2 -->
+          <div
+            class="flex items-center bg-white rounded-xl shadow-sm p-4 border border-gray-200"
+          >
+            <div class="flex-shrink-0 ml-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 text-gray-500"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 12.76c0 1.6.14 3.19.42 4.77a8.98 8.98 0 003.885 3.885c1.58.28 3.17.42 4.77.42s3.19-.14 4.77-.42a8.98 8.98 0 003.885-3.885c.28-1.58.42-3.17.42-4.77s-.14-3.19-.42-4.77a8.98 8.98 0 00-3.885-3.885C16.19 2.14 14.6 2 13 2s-3.19.14-4.77.42A8.98 8.98 0 004.345 6.305c-.28 1.58-.42 3.17-.42 4.77V12h.008v.008H2.25zM12 6.75a.75.75 0 100-1.5.75.75 0 000 1.5zM12 11.25a.75.75 0 100-1.5.75.75 0 000 1.5zM12 15.75a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                />
+              </svg>
+            </div>
+            <div class="flex-grow text-right">
+              <h3 class="text-base font-semibold text-gray-800 mb-1">
+                سوختگی های مرتبط با شتاب و سوء مصرف مواد؛ ترکیب چالش انگیز
+              </h3>
+              <p class="text-xs text-gray-500">۱۲ خرداد ۱۴۰۴ • ۵ دقیقه</p>
+            </div>
+            <div class="flex-shrink-0 mr-4">
+              <img
+                src="https://placehold.co/60x60/e0f2f1/26a69a?text=تصویر"
+                alt="Related Article Image"
+                class="w-16 h-16 rounded-lg object-cover"
+              />
+            </div>
+          </div>
+          <!-- Related Article Card 3 -->
+          <div
+            class="flex items-center bg-white rounded-xl shadow-sm p-4 border border-gray-200"
+          >
+            <div class="flex-shrink-0 ml-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 text-gray-500"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 12.76c0 1.6.14 3.19.42 4.77a8.98 8.98 0 003.885 3.885c1.58.28 3.17.42 4.77.42s3.19-.14 4.77-.42a8.98 8.98 0 003.885-3.885c.28-1.58.42-3.17.42-4.77s-.14-3.19-.42-4.77a8.98 8.98 0 00-3.885-3.885C16.19 2.14 14.6 2 13 2s-3.19.14-4.77.42A8.98 8.98 0 004.345 6.305c-.28 1.58-.42 3.17-.42 4.77V12h.008v.008H2.25zM12 6.75a.75.75 0 100-1.5.75.75 0 000 1.5zM12 11.25a.75.75 0 100-1.5.75.75 0 000 1.5zM12 15.75a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                />
+              </svg>
+            </div>
+            <div class="flex-grow text-right">
+              <h3 class="text-base font-semibold text-gray-800 mb-1">
+                امید به زندگی در بیماران سالمند پس از جراحات سوختگی
+              </h3>
+              <p class="text-xs text-gray-500">۱۲ خرداد ۱۴۰۴ • ۵ دقیقه</p>
+            </div>
+            <div class="flex-shrink-0 mr-4">
+              <img
+                src="https://placehold.co/60x60/e0f2f1/26a69a?text=تصویر"
+                alt="Related Article Image"
+                class="w-16 h-16 rounded-lg object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript for horizontal scrolling (sliders)
+      document.addEventListener("DOMContentLoaded", () => {
+        const popularSlider = document.getElementById("popularArticlesSlider");
+        const trendingSlider = document.getElementById(
+          "trendingArticlesSlider"
+        );
+        const categoryButtonsSlider = document.getElementById(
+          "categoryButtonsSlider"
+        ); // New slider element
+
+        // Function to enable horizontal drag scrolling
+        const enableDragScroll = (element) => {
+          let isDown = false;
+          let startX;
+          let scrollLeft;
+
+          element.addEventListener("mousedown", (e) => {
+            isDown = true;
+            element.classList.add("active-drag");
+            startX = e.pageX - element.offsetLeft;
+            scrollLeft = element.scrollLeft;
+          });
+
+          element.addEventListener("mouseleave", () => {
+            isDown = false;
+            element.classList.remove("active-drag");
+          });
+
+          element.addEventListener("mouseup", () => {
+            isDown = false;
+            element.classList.remove("active-drag");
+          });
+
+          element.addEventListener("mousemove", (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - element.offsetLeft;
+            const walk = (x - startX) * 2; //scroll-fast
+            element.scrollLeft = scrollLeft - walk;
+          });
+
+          // Touch events for mobile
+          element.addEventListener(
+            "touchstart",
+            (e) => {
+              isDown = true;
+              startX = e.touches[0].pageX - element.offsetLeft;
+              scrollLeft = element.scrollLeft;
+            },
+            { passive: true }
+          );
+
+          element.addEventListener("touchend", () => {
+            isDown = false;
+          });
+
+          element.addEventListener(
+            "touchmove",
+            (e) => {
+              if (!isDown) return;
+              const x = e.touches[0].pageX - element.offsetLeft;
+              const walk = (x - startX) * 2;
+              element.scrollLeft = scrollLeft - walk;
+            },
+            { passive: true }
+          );
+        };
+
+        if (popularSlider) {
+          enableDragScroll(popularSlider);
+        }
+        if (trendingSlider) {
+          enableDragScroll(trendingSlider);
+        }
+        if (categoryButtonsSlider) {
+          // Enable drag scroll for category buttons
+          enableDragScroll(categoryButtonsSlider);
+        }
+      });
+    </script>
+  </body>
+</html>
