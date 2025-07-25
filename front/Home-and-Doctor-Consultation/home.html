@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سلامت همراه - صفحه اصلی</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://v1.fontapi.ir/css/Yekan");
+
+      body {
+        font-family: "Yekan", sans-serif;
+        background-color: #e0f2f1; /* Light teal background for the whole page */
+      }
+      /* Custom scrollbar styling for better appearance */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none; /* For Chrome, Safari, and Opera */
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none; /* For Internet Explorer and Edge */
+        scrollbar-width: none; /* For Firefox */
+      }
+      .slider-card {
+        scroll-snap-align: start; /* For smooth snapping in sliders */
+        flex-shrink: 0; /* Prevent cards from shrinking */
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <div
+      class="flex-grow w-full lg:max-w-md lg:mx-auto lg:my-8 lg:rounded-xl lg:shadow-lg bg-white overflow-hidden pb-[50px]"
+    >
+      <!-- Top Bar -->
+      <div class="w-full flex items-center justify-between p-6 pb-4">
+        <h1 class="flex-grow text-center text-xl font-bold text-gray-800">
+          آرزویت را پیدا کن <br />
+          راه حل سلامتی
+        </h1>
+        <button
+          class="text-gray-600 hover:text-gray-800 transition duration-200"
+        >
+          <img src="./icon/home/bell.svg" alt="" />
+        </button>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="p-6 pt-4">
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="جستجوی پزشک، داروها، مقالات و..."
+            class="w-full pr-12 pl-4 py-3 border bg-[#FBFBFB] border-gray-300 rounded-3xl focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right"
+          />
+          <div
+            class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400"
+          >
+            <img src="./icon/home/Search.svg" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Access Categories -->
+      <div class="px-6 py-4 flex justify-around items-start space-x-2">
+        <div class="flex flex-col items-center text-center">
+          <div
+            class="w-16 h-16 rounded-full flex items-center justify-center mb-2 shadow-sm"
+          >
+            <img src="./icon/home/doctor.svg" alt="" />
+          </div>
+          <span class="text-sm font-medium text-gray-700">دکتر</span>
+        </div>
+        <div class="flex flex-col items-center text-center">
+          <div
+            class="w-16 h-16 rounded-full flex items-center justify-center mb-2 shadow-sm"
+          >
+            <img src="./icon/home/Pharmacy.svg" alt="" />
+          </div>
+          <span class="text-sm font-medium text-gray-700">داروخانه</span>
+        </div>
+        <div class="flex flex-col items-center text-center">
+          <div
+            class="w-16 h-16 rounded-full flex items-center justify-center mb-2 shadow-sm"
+          >
+            <img src="./icon/home/video.svg" alt="" />
+          </div>
+          <span class="text-sm font-medium text-gray-700">ویدئوها</span>
+        </div>
+        <div class="flex flex-col items-center text-center">
+          <div
+            class="w-16 h-16 rounded-full flex items-center justify-center mb-2 shadow-sm"
+          >
+            <img src="./icon/home/Document.svg" alt="" />
+          </div>
+          <span class="text-sm font-medium text-gray-700">گزارشات</span>
+        </div>
+      </div>
+
+      <!-- Promotional Banner -->
+      <div class="px-6 py-4">
+        <div
+          class="relative bg-[#e0f2f1] rounded-xl px-2 py-5 flex items-center justify-between shadow-md"
+        >
+          <div
+            class="flex-shrink-0 ml-4 w-32 h-40 flex items-center justify-center"
+          >
+            <img
+              src="./img/doctor-img.png"
+              alt="Doctor Image"
+              class="absolute bottom-0 left-0 w-44 z-10 object-cover"
+            />
+          </div>
+          <div class="flex-grow text-right">
+            <h2
+              class="transform translate-x-3 text-lg text-center font-semibold text-gray-800 mb-2"
+            >
+              محافظت زودهنگام <br />
+              برای سلامت خانواده شما
+            </h2>
+            <button
+              class="bg-[#26a69a] text-white py-2 px-4 mt-2 rounded-2xl text-sm font-medium hover:bg-[#208f83] transition duration-300 ease-in-out"
+            >
+              با ما تجربه کنید
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Training Clips Section (Slider) -->
+      <div class="px-6 py-4">
+        <div class="flex justify-between items-center mb-4">
+          <a href="#" class="text-[#26a69a] text-sm font-medium hover:underline"
+            >مشاهده همه</a
+          >
+          <h2 class="text-lg font-bold text-gray-800">کلیپ های آموزشی</h2>
+        </div>
+        <div
+          id="trainingClipsSlider"
+          class="flex overflow-x-auto no-scrollbar space-x-4 pb-2 scroll-snap-x"
+        >
+          <!-- Training Clip Card 1 -->
+          <div
+            class="slider-card pt-4 flex flex-col w-40 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+          >
+            <div class="relative w-full flex items-center justify-center h-28">
+              <img
+                src="./img/post1.png"
+                alt="Training Clip Image"
+                class="w-24 h-24 rounded-full object-cover"
+              />
+            </div>
+            <div
+              class="h-28 p-3 text-right flex items-center justify-around flex-col"
+            >
+              <h3
+                class="text-[10px] font-semibold text-center text-[#3B4453] mb-1"
+              >
+                درمان سوختگی دست به چه صورت انجام می‌شود؟
+              </h3>
+              <div
+                class="flex items-center justify-center gap-4 text-gray-500 text-xs"
+              >
+                <div class="flex justify-center gap-1 items-center">
+                  <span class="text-[#A1A8B0]">12</span>
+                  <img src="./icon/home/eye.svg" alt="" />
+                </div>
+                <div
+                  class="flex justify-center gap-1 rounded-lg px-2 py-1 bg-[#E8F3F1] items-center"
+                >
+                  <img src="./icon/home/Star.svg" alt="" />
+                  <span class="text-[#199A8E]">4.7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Training Clip Card 2 -->
+          <div
+            class="slider-card pt-4 w-40 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+          >
+            <div class="relative w-full flex items-center justify-center h-28">
+              <img
+                src="./img/post2.png"
+                alt="Training Clip Image"
+                class="w-24 h-24 rounded-full object-cover"
+              />
+            </div>
+            <div
+              class="h-28 p-3 text-right flex items-center justify-around flex-col"
+            >
+              <h3
+                class="text-[10px] text-center font-semibold text-[#3B4453] mb-1"
+              >
+                بایدها و نبایدهای درمان سوختگی
+              </h3>
+              <div
+                class="flex items-center justify-center gap-4 text-gray-500 text-xs"
+              >
+                <div class="flex justify-center gap-1 items-center">
+                  <span class="text-[#A1A8B0]">12</span>
+                  <img src="./icon/home/eye.svg" alt="" />
+                </div>
+                <div
+                  class="flex justify-center gap-1 rounded-lg px-2 py-1 bg-[#E8F3F1] items-center"
+                >
+                  <img src="./icon/home/Star.svg" alt="" />
+                  <span class="text-[#199A8E]">4.7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Training Clip Card 3 -->
+          <div
+            class="slider-card pt-4 w-40 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+          >
+            <div class="relative w-full flex items-center justify-center h-28">
+              <img
+                src="./img/post3.png"
+                alt="Training Clip Image"
+                class="w-24 h-24 rounded-full object-cover"
+              />
+            </div>
+            <div
+              class="h-28 p-3 text-right flex items-center justify-around flex-col"
+            >
+              <h3
+                class="text-[10px] text-center font-semibold text-[#3B4453] mb-1"
+              >
+                اقدامات پس از سوختگی
+              </h3>
+              <div
+                class="w-full flex items-center justify-center gap-4 text-gray-500 text-xs"
+              >
+                <div class="flex justify-center gap-1 items-center">
+                  <span class="text-[#A1A8B0]">12</span>
+                  <img src="./icon/home/eye.svg" alt="" />
+                </div>
+                <div
+                  class="flex justify-center gap-1 rounded-lg px-2 py-1 bg-[#E8F3F1] items-center"
+                >
+                  <img src="./icon/home/Star.svg" alt="" />
+                  <span class="text-[#199A8E]">4.7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- News and Articles Section -->
+      <div class="px-6 py-4">
+        <div class="flex justify-between items-center mb-4">
+          <a href="#" class="text-[#26a69a] text-sm font-medium hover:underline"
+            >مشاهده همه</a
+          >
+          <h2 class="text-lg font-bold text-gray-800">اخبار و مقالات</h2>
+        </div>
+        <div dir="rtl" class="space-y-4">
+          <!-- News/Article Card 1 -->
+          <div
+            class="relative flex items-center bg-white rounded-xl shadow-sm p-4 pl-10 border border-gray-200"
+          >
+            <img
+              src="./icon/home/Bookmark.svg"
+              class="absolute left-1 top-3 w-6 h-6"
+              alt=""
+            />
+            <div class="flex-shrink-0 ml-4">
+              <img
+                src="./img/articleImage.png"
+                alt="News Image"
+                class="w-20 h-20 rounded-lg object-cover"
+              />
+            </div>
+            <div class="flex-grow text-right">
+              <h3 class="text-sm font-semibold text-[#565656] mb-1">
+                بررسی چهار مکانیسم اصلی مقاومت به کارباپنم در سطح بالا بیماران
+                سوختگی
+              </h3>
+              <p class="text-xs mt-4 text-[#ADADAD]">
+                ۱۲ خرداد ۱۴۰۴ • ۶ دقیقه مطالعه
+              </p>
+            </div>
+          </div>
+          <!-- News/Article Card 2 -->
+          <div
+            class="relative flex items-center bg-white rounded-xl shadow-sm p-4 pl-10 border border-gray-200"
+          >
+            <img
+              src="./icon/home/Bookmark.svg"
+              class="absolute left-1 top-3 w-6 h-6"
+              alt=""
+            />
+            <div class="flex-shrink-0 ml-4">
+              <img
+                src="./img/articleImage.png"
+                alt="News Image"
+                class="w-20 h-20 rounded-lg object-cover"
+              />
+            </div>
+            <div class="flex-grow text-right">
+              <h3 class="text-sm font-semibold text-[#565656] mb-1">
+                ۲۵ میوه سالمی که می‌توانید بخورید، به گفته یک متخصص تغذیه
+              </h3>
+              <p class="text-xs mt-4 text-[#ADADAD]">
+                ۱۲ خرداد ۱۴۰۴ • ۵ دقیقه مطالعه
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div
+      class="fixed left-1/2 transform -translate-x-1/2 bottom-0 w-full lg:max-w-md lg:mx-auto bg-white border-t border-gray-200 p-4 flex justify-around items-center shadow-lg"
+    >
+      <div
+        class="absolute -top-1/2 left-2 flex items-center justify-center shadow-sm w-12 h-12 bg-teal-600 rounded-full"
+      >
+        <img src="./icon/nav/Chat.svg" alt="" />
+      </div>
+      <img src="./icon/nav/Home.svg" alt="" />
+      <img src="./icon/nav/Message.svg" alt="" />
+      <img src="./icon/nav/Calendar.svg" alt="" />
+      <img src="./icon/nav/Profile.svg" alt="" />
+    </div>
+
+    <script>
+      // JavaScript for horizontal scrolling (sliders)
+      document.addEventListener("DOMContentLoaded", () => {
+        const trainingClipsSlider = document.getElementById(
+          "trainingClipsSlider"
+        );
+
+        // Function to enable horizontal drag scrolling
+        const enableDragScroll = (element) => {
+          let isDown = false;
+          let startX;
+          let scrollLeft;
+
+          element.addEventListener("mousedown", (e) => {
+            isDown = true;
+            element.classList.add("active-drag");
+            startX = e.pageX - element.offsetLeft;
+            scrollLeft = element.scrollLeft;
+          });
+
+          element.addEventListener("mouseleave", () => {
+            isDown = false;
+            element.classList.remove("active-drag");
+          });
+
+          element.addEventListener("mouseup", () => {
+            isDown = false;
+            element.classList.remove("active-drag");
+          });
+
+          element.addEventListener("mousemove", (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - element.offsetLeft;
+            const walk = (x - startX) * 2; //scroll-fast
+            element.scrollLeft = scrollLeft - walk;
+          });
+
+          // Touch events for mobile
+          element.addEventListener(
+            "touchstart",
+            (e) => {
+              isDown = true;
+              startX = e.touches[0].pageX - element.offsetLeft;
+              scrollLeft = element.scrollLeft;
+            },
+            { passive: true }
+          );
+
+          element.addEventListener("touchend", () => {
+            isDown = false;
+          });
+
+          element.addEventListener(
+            "touchmove",
+            (e) => {
+              if (!isDown) return;
+              const x = e.touches[0].pageX - element.offsetLeft;
+              const walk = (x - startX) * 2;
+              element.scrollLeft = scrollLeft - walk;
+            },
+            { passive: true }
+          );
+        };
+
+        if (trainingClipsSlider) {
+          enableDragScroll(trainingClipsSlider);
+        }
+      });
+    </script>
+  </body>
+</html>
