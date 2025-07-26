@@ -222,11 +222,90 @@
       <!-- Request Button -->
       <div class="p-6 grid place-items-center">
         <button
+          id="submitRequestBtn"
           class="w-3/4 bg-[#26a69a] text-white py-3 px-6 rounded-full font-semibold text-lg shadow-md hover:bg-[#208f83] transition duration-300 ease-in-out"
         >
           ثبت درخواست
         </button>
       </div>
     </div>
+
+    <!-- Success Modal -->
+    <div
+      id="successModal"
+      class="fixed inset-0 hidden items-center justify-center modal-overlay"
+    >
+      <div
+        class="bg-white rounded-xl shadow-lg p-8 py-24 m-4 max-w-sm text-center modal-content"
+      >
+        <div
+          class="w-24 h-24 bg-[#E8F3F1] rounded-full flex items-center justify-center mx-auto mb-6"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="#26a69a"
+            class="w-12 h-12"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.5 12.75l6 6 9-13.5"
+            />
+          </svg>
+        </div>
+        <h2 class="text-xl font-bold text-gray-800 mb-4">
+          درخواست شما با موفقیت انجام شد
+        </h2>
+        <p class="text-gray-600 mb-6">
+          می‌توانید با پزشک مورد اعتماد خود مشاوره داشته باشید.
+        </p>
+        <button
+          id="chatWithDoctorBtn"
+          class="w-3/4 mx-auto bg-[#26a69a] text-white py-3 px-6 rounded-full font-semibold text-lg shadow-md hover:bg-[#208f83] transition duration-300 ease-in-out"
+        >
+          گفتگو با پزشک
+        </button>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const submitRequestBtn = document.getElementById("submitRequestBtn");
+        const successModal = document.getElementById("successModal");
+        const chatWithDoctorBtn = document.getElementById("chatWithDoctorBtn");
+
+        // Show the modal when the submit request button is clicked
+        if (submitRequestBtn) {
+          submitRequestBtn.addEventListener("click", () => {
+            if (successModal) {
+              successModal.classList.remove("hidden");
+              successModal.classList.add("flex");
+            }
+          });
+        }
+
+        // Hide the modal when the "گفتگو با پزشک" button is clicked (or any other close action)
+        if (chatWithDoctorBtn) {
+          chatWithDoctorBtn.addEventListener("click", () => {
+            if (successModal) {
+              successModal.classList.add("hidden");
+              successModal.classList.remove("flex");
+            }
+          });
+        }
+
+        // Optional: Hide modal if clicking outside the modal content
+        if (successModal) {
+          successModal.addEventListener("click", (e) => {
+            if (e.target === successModal) {
+              successModal.classList.add("hidden");
+              successModal.classList.remove("flex");
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>
