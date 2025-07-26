@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سلامت همراه - لیست دکترها</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      @import url("https://v1.fontapi.ir/css/Yekan");
+      body {
+        font-family: "Yekan", sans-serif;
+        background-color: #e0f2f1; /* Light teal background for the whole page */
+      }
+      .filter-btn {
+        flex: 1;
+      }
+      /* .filter-btn:last-child {
+        border-bottom-left-radius: 8px;
+        border-top-left-radius: 8px;
+      }
+      .filter-btn:first-child {
+        border-bottom-right-radius: 8px;
+        border-top-right-radius: 8px;
+      } */
+
+      .filter-btn.active {
+        background-color: #199a8e;
+        color: white;
+        border-radius: 14px;
+      }
+      .filter-btn {
+        transition: all 0.3s ease;
+      }
+      .doctor-card {
+        transition: all 0.3s ease;
+      }
+      .doctor-card.hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <div
+      class="flex-grow pb-10 w-full lg:max-w-md lg:mx-auto lg:my-8 lg:rounded-xl lg:shadow-lg bg-white overflow-hidden"
+    >
+      <!-- Top Bar -->
+      <div class="w-full my-5 flex items-center justify-between p-6 pb-4">
+        <button
+          class="text-gray-600 hover:text-gray-800 transition duration-200"
+          onclick="goBack()"
+        >
+          <img src="./icon/doctors/Search.svg" alt="" />
+        </button>
+        <h1 class="text-xl font-semibold text-gray-800">دکتر</h1>
+        <button
+          class="text-gray-600 hover:text-gray-800 transition duration-200"
+          onclick="toggleMenu()"
+        ></button>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="px-4 pb-4">
+        <div class="flex h-14 justify-center bg-[#E8F3F1] rounded-sm">
+          <button
+            class="filter-btn px-4 py-2 text-xs border-0 text-[#101623] active"
+            data-filter="all"
+            onclick="filterDoctors('all', this)"
+          >
+            همه
+          </button>
+          <button
+            class="filter-btn px-4 py-2 text-xs border-0 text-[#101623]"
+            data-filter="cardiology"
+            onclick="filterDoctors('cardiology', this)"
+          >
+            کارشناسان زخم
+          </button>
+
+          <button
+            class="filter-btn px-4 py-2 text-xs border-0 text-[#101623]"
+            data-filter="neurology"
+            onclick="filterDoctors('neurology', this)"
+          >
+            روانشناسان بالینی
+          </button>
+        </div>
+      </div>
+
+      <!-- Doctors List -->
+      <div class="p-4 space-y-4" id="doctorsList">
+        <!-- Doctor Card 1 -->
+        <div
+          class="doctor-card flex items-center bg-white rounded-xl shadow-sm p-4 border border-[#E8F3F1]"
+          data-specialty="cardiology"
+          onclick="selectDoctor('دکتر رضا شکری')"
+        >
+          <div class="flex-shrink-0 ml-4">
+            <img
+              src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=150&h=150&fit=crop&crop=face"
+              alt="Doctor Image"
+              class="w-30 h-30 rounded-lg object-cover"
+            />
+          </div>
+          <div class="flex-grow text-right flex flex-col gap-2">
+            <h2 class="text-sm font-semibold text-[#3B4453] mb-1">
+              دکتر رضا شکری
+            </h2>
+            <div
+              class="flex flex-row-reverse items-center justify-end text-gray-500 text-xs mb-1"
+            >
+              <span class="ml-1 text-[#A1A8B0] text-[11px]"
+                >متخصص قلب و عروق</span
+              >
+            </div>
+            <div
+              class="flex items-start gap-2 flex-col-reverse text-gray-500 text-xs"
+            >
+              <div class="flex items-center ml-2 gap-1">
+                <img src="./icon/home/Location.svg" alt="" />
+                <span class="ml-1 text-[#A1A8B0] text-xs">زاهدان</span>
+              </div>
+              <div
+                class="flex items-center px-2 py-1 rounded-sm w-fit bg-[#E8F3F1] text-gray-500 text-xs"
+              >
+                <span class="ml-1 text-[#199A8E] text-base font-semibold"
+                  >4.7</span
+                >
+                <img class="w-4" src="./icon/home/Star.svg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor Card 2 -->
+        <div
+          class="doctor-card flex items-center bg-white rounded-xl shadow-sm p-4 border border-[#E8F3F1]"
+          data-specialty="dermatology"
+          onclick="selectDoctor('دکتر سمیرا هراتی')"
+        >
+          <div class="flex-shrink-0 ml-4">
+            <img
+              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150&h=150&fit=crop&crop=face"
+              alt="Doctor Image"
+              class="w-30 h-30 rounded-lg object-cover"
+            />
+          </div>
+          <div class="flex-grow text-right flex flex-col gap-2">
+            <h2 class="text-sm font-semibold text-[#3B4453] mb-1">
+              دکتر سمیرا هراتی
+            </h2>
+            <div
+              class="flex flex-row-reverse items-center justify-end text-gray-500 text-xs mb-1"
+            >
+              <span class="ml-1 text-[#A1A8B0] text-[11px]"
+                >متخصص پوست و مو</span
+              >
+            </div>
+            <div
+              class="flex items-start gap-2 flex-col-reverse text-gray-500 text-xs"
+            >
+              <div class="flex items-center ml-2 gap-1">
+                <img src="./icon/home/Location.svg" alt="" />
+                <span class="ml-1 text-[#A1A8B0] text-xs">زاهدان</span>
+              </div>
+              <div
+                class="flex items-center px-2 py-1 rounded-sm w-fit bg-[#E8F3F1] text-gray-500 text-xs"
+              >
+                <span class="ml-1 text-[#199A8E] text-base font-semibold"
+                  >4.9</span
+                >
+                <img class="w-4" src="./icon/home/Star.svg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor Card 3 -->
+        <div
+          class="doctor-card flex items-center bg-white rounded-xl shadow-sm p-4 border border-[#E8F3F1]"
+          data-specialty="neurology"
+          onclick="selectDoctor('دکتر مریم حمیدی')"
+        >
+          <div class="flex-shrink-0 ml-4">
+            <img
+              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150&h=150&fit=crop&crop=face"
+              alt="Doctor Image"
+              class="w-30 h-30 rounded-lg object-cover"
+            />
+          </div>
+          <div class="flex-grow text-right flex flex-col gap-2">
+            <h2 class="text-sm font-semibold text-[#3B4453] mb-1">
+              دکتر مریم حمیدی
+            </h2>
+            <div
+              class="flex flex-row-reverse items-center justify-end text-gray-500 text-xs mb-1"
+            >
+              <span class="ml-1 text-[#A1A8B0] text-[11px]"
+                >متخصص مغز و اعصاب</span
+              >
+            </div>
+            <div
+              class="flex items-start gap-2 flex-col-reverse text-gray-500 text-xs"
+            >
+              <div class="flex items-center ml-2 gap-1">
+                <img src="./icon/home/Location.svg" alt="" />
+                <span class="ml-1 text-[#A1A8B0] text-xs">زاهدان</span>
+              </div>
+              <div
+                class="flex items-center px-2 py-1 rounded-sm w-fit bg-[#E8F3F1] text-gray-500 text-xs"
+              >
+                <span class="ml-1 text-[#199A8E] text-base font-semibold"
+                  >4.8</span
+                >
+                <img class="w-4" src="./icon/home/Star.svg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor Card 4 -->
+        <div
+          class="doctor-card flex items-center bg-white rounded-xl shadow-sm p-4 border border-[#E8F3F1]"
+          data-specialty="cardiology"
+          onclick="selectDoctor('دکتر احمد محمدی')"
+        >
+          <div class="flex-shrink-0 ml-4">
+            <img
+              src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=150&h=150&fit=crop&crop=face"
+              alt="Doctor Image"
+              class="w-30 h-30 rounded-lg object-cover"
+            />
+          </div>
+          <div class="flex-grow text-right flex flex-col gap-2">
+            <h2 class="text-sm font-semibold text-[#3B4453] mb-1">
+              دکتر احمد محمدی
+            </h2>
+            <div
+              class="flex flex-row-reverse items-center justify-end text-gray-500 text-xs mb-1"
+            >
+              <span class="ml-1 text-[#A1A8B0] text-[11px]"
+                >متخصص قلب و عروق</span
+              >
+            </div>
+            <div
+              class="flex items-start gap-2 flex-col-reverse text-gray-500 text-xs"
+            >
+              <div class="flex items-center ml-2 gap-1">
+                <img src="./icon/home/Location.svg" alt="" />
+                <span class="ml-1 text-[#A1A8B0] text-xs">زاهدان</span>
+              </div>
+              <div
+                class="flex items-center px-2 py-1 rounded-sm w-fit bg-[#E8F3F1] text-gray-500 text-xs"
+              >
+                <span class="ml-1 text-[#199A8E] text-base font-semibold"
+                  >4.6</span
+                >
+                <img class="w-4" src="./icon/home/Star.svg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor Card 5 -->
+        <div
+          class="doctor-card flex items-center bg-white rounded-xl shadow-sm p-4 border border-[#E8F3F1]"
+          data-specialty="dermatology"
+          onclick="selectDoctor('دکتر فاطمه رضایی')"
+        >
+          <div class="flex-shrink-0 ml-4">
+            <img
+              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150&h=150&fit=crop&crop=face"
+              alt="Doctor Image"
+              class="w-30 h-30 rounded-lg object-cover"
+            />
+          </div>
+          <div class="flex-grow text-right flex flex-col gap-2">
+            <h2 class="text-sm font-semibold text-[#3B4453] mb-1">
+              دکتر فاطمه رضایی
+            </h2>
+            <div
+              class="flex flex-row-reverse items-center justify-end text-gray-500 text-xs mb-1"
+            >
+              <span class="ml-1 text-[#A1A8B0] text-[11px]"
+                >متخصص پوست و مو</span
+              >
+            </div>
+            <div
+              class="flex items-start gap-2 flex-col-reverse text-gray-500 text-xs"
+            >
+              <div class="flex items-center ml-2 gap-1">
+                <img src="./icon/home/Location.svg" alt="" />
+                <span class="ml-1 text-[#A1A8B0] text-xs">زاهدان</span>
+              </div>
+              <div
+                class="flex flo items-center px-2 py-1 rounded-sm w-fit bg-[#E8F3F1] text-gray-500 text-xs"
+              >
+                <span class="ml-1 text-[#199A8E] text-base font-semibold"
+                  >4.5</span
+                >
+                <img class="w-4" src="./icon/home/Star.svg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div
+      class="fixed flex-row-reverse left-1/2 transform -translate-x-1/2 bottom-0 w-full lg:max-w-md lg:mx-auto bg-white border-t border-[#E8F3F1] p-4 flex justify-around items-center shadow-lg"
+    >
+      <div
+        class="absolute -top-1/2 left-2 flex items-center justify-center shadow-sm w-12 h-12 bg-teal-600 rounded-full"
+      >
+        <img src="./icon/nav/Chat.svg" alt="" />
+      </div>
+      <img src="./icon/nav/messagehistory/Home.svg" alt="" />
+      <img src="./icon/nav/messagehistory/Message.svg" alt="" />
+      <img src="./icon/nav/Calendar.svg" alt="" />
+      <img src="./icon/nav/Profile.svg" alt="" />
+    </div>
+
+    <script>
+      // Filter functionality
+      function filterDoctors(specialty, button) {
+        // Remove active class from all filter buttons
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+
+        // Add active class to clicked button
+        button.classList.add("active");
+
+        // Get all doctor cards
+        const doctorCards = document.querySelectorAll(".doctor-card");
+
+        // Show/hide cards based on filter
+        doctorCards.forEach((card) => {
+          const cardSpecialty = card.getAttribute("data-specialty");
+
+          if (specialty === "all" || cardSpecialty === specialty) {
+            card.classList.remove("hidden");
+            card.style.opacity = "0";
+            setTimeout(() => {
+              card.style.opacity = "1";
+            }, 50);
+          } else {
+            card.style.opacity = "0";
+            setTimeout(() => {
+              card.classList.add("hidden");
+            }, 300);
+          }
+        });
+
+        // Update results count (optional)
+        setTimeout(() => {
+          const visibleCards = document.querySelectorAll(
+            ".doctor-card:not(.hidden)"
+          );
+          console.log(`نمایش ${visibleCards.length} دکتر`);
+        }, 350);
+      }
+
+      // Top bar button functions
+      function goBack() {
+        console.log("بازگشت به صفحه قبل");
+        // Add your navigation logic here
+        window.history.back();
+      }
+
+      function toggleMenu() {
+        console.log("منوی تنظیمات باز شد");
+        // Add menu toggle logic here
+        alert("منوی تنظیمات");
+      }
+
+      // Doctor selection function
+      function selectDoctor(doctorName) {
+        console.log("دکتر انتخاب شده:", doctorName);
+        // Add navigation to doctor profile or booking page
+        alert("انتخاب دکتر: " + doctorName);
+      }
+
+      // Bottom navigation functions
+
+      function openChat() {
+        console.log("باز کردن چت");
+        alert("باز کردن چت پشتیبانی");
+      }
+
+      // Add smooth scroll animation for filter changes
+      function smoothScrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      // Add click feedback for cards
+      document.addEventListener("DOMContentLoaded", function () {
+        const doctorCards = document.querySelectorAll(".doctor-card");
+
+        doctorCards.forEach((card) => {
+          card.addEventListener("mousedown", function () {
+            this.style.transform = "scale(0.98)";
+          });
+
+          card.addEventListener("mouseup", function () {
+            this.style.transform = "scale(1)";
+          });
+
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "scale(1)";
+          });
+        });
+      });
+
+      // Search functionality (if you want to add search later)
+      function searchDoctors(query) {
+        const doctorCards = document.querySelectorAll(".doctor-card");
+        const searchQuery = query.toLowerCase();
+
+        doctorCards.forEach((card) => {
+          const doctorName = card.querySelector("h2").textContent.toLowerCase();
+          const specialty = card
+            .querySelector(".flex-row-reverse span")
+            .textContent.toLowerCase();
+
+          if (
+            doctorName.includes(searchQuery) ||
+            specialty.includes(searchQuery)
+          ) {
+            card.classList.remove("hidden");
+          } else {
+            card.classList.add("hidden");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
