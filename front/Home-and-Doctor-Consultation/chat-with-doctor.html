@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سلامت همراه - گفتگو با دکتر</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      @import url("https://v1.fontapi.ir/css/Yekan");
+      body {
+        font-family: "Yekan", sans-serif;
+        background-color: #e0f2f1; /* Light teal background for the whole page */
+      }
+      .chat-bubble-received {
+        background-color: #e2e8f0; /* bg-slate-200 */
+        border-radius: 0.75rem; /* rounded-xl */
+        border-top-right-radius: 0; /* rounded-tr-none */
+      }
+      .chat-bubble-sent {
+        background-color: #26a69a; /* teal color */
+        border-radius: 0.75rem; /* rounded-xl */
+        border-top-left-radius: 0; /* rounded-tl-none */
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <div
+      class="flex-grow w-full lg:max-w-md lg:mx-auto lg:my-8 lg:rounded-xl lg:shadow-lg bg-white overflow-hidden flex flex-col"
+    >
+      <!-- Top Bar -->
+      <div
+        class="w-full flex flex-row-reverse items-center justify-between p-6 pb-4 mb-10"
+      >
+        <button
+          class="text-gray-600 hover:text-gray-800 transition duration-200"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+        <h1 class="text-xl font-bold text-gray-800">دکتر رضا شکری</h1>
+        <div class="flex items-center flex-row-reverse space-x-4">
+          <button
+            class="text-gray-600 hover:text-gray-800 transition duration-200"
+          >
+            <img src="./icon/chat/VideoCamera.svg" alt="" />
+          </button>
+          <button
+            class="text-gray-600 hover:text-gray-800 transition duration-200"
+          >
+            <img src="./icon/chat/Phone.svg" alt="" />
+          </button>
+          <button
+            class="text-gray-600 hover:text-gray-800 transition duration-200"
+          >
+            <img src="./icon/chat/3dot.svg" alt="" />
+          </button>
+        </div>
+      </div>
+
+      <!-- Chat Messages Area -->
+      <div class="flex-grow p-4 overflow-y-auto space-y-4">
+        <!-- Initial Consultation Message -->
+        <div class="text-center text-gray-500 text-sm mb-4">
+          <div class="inline-block bg-[#E8F3F1] rounded-lg px-4 py-2">
+            <h3 class="font-semibold text-[#26a69a] mb-1">شروع مشاوره</h3>
+            <p>شما می‌توانید مشکل خود را با پزشک در میان بگذارید</p>
+          </div>
+        </div>
+
+        <!-- Received Message 1 -->
+        <div class="flex items-start">
+          <img
+            src="https://placehold.co/40x40/e0f2f1/26a69a?text=دکتر"
+            alt="Doctor Avatar"
+            class="w-10 h-10 rounded-full object-cover ml-3"
+          />
+          <div>
+            <div class="flex items-center mb-1">
+              <span class="text-sm font-semibold text-gray-800 ml-2"
+                >دکتر رضا شکری</span
+              >
+              <span class="text-xs text-gray-500">۱۰ دقیقه قبل</span>
+            </div>
+            <div
+              class="chat-bubble-received p-3 max-w-xs text-right text-gray-800"
+            >
+              سلام چطور می‌توانم به شما کمک کنم؟
+            </div>
+          </div>
+        </div>
+
+        <!-- Sent Message 1 -->
+        <div class="flex justify-end items-start">
+          <div>
+            <div class="flex items-center justify-end mb-1">
+              <span class="text-sm font-semibold text-gray-800"></span>
+            </div>
+            <div
+              class="chat-bubble-sent p-3 max-w-xs text-right text-white relative"
+            >
+              سه روزه است که دچار سوختگی هستم، چند تا قرص مصرف کردم، اما هنوز
+              درد دارم. چه کارهایی باید انجام دهم و چه زمانی ممکن است بهتر شود؟
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                class="w-4 h-4 text-white absolute bottom-1 left-1"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Received Message 2 -->
+        <div class="flex items-start">
+          <img
+            src="https://placehold.co/40x40/e0f2f1/26a69a?text=دکتر"
+            alt="Doctor Avatar"
+            class="w-10 h-10 rounded-full object-cover ml-3"
+          />
+          <div>
+            <div class="flex items-center mb-1">
+              <span class="text-sm font-semibold text-gray-800 ml-2"
+                >دکتر رضا شکری</span
+              >
+              <span class="text-xs text-gray-500">۱۰ دقیقه قبل</span>
+            </div>
+            <div
+              class="chat-bubble-received p-3 max-w-xs text-right text-gray-800"
+            >
+              بسیار خب، لطفاً بفرمایید سوختگی در چه ناحیه‌ای است.
+            </div>
+          </div>
+        </div>
+
+        <!-- Sent Message 2 (Short) -->
+        <div class="flex justify-end items-start">
+          <div>
+            <div class="flex items-center justify-end mb-1">
+              <span class="text-sm font-semibold text-gray-800"></span>
+            </div>
+            <div
+              class="chat-bubble-sent p-3 max-w-xs text-right text-white relative"
+            >
+              سوختگی در ناحیه دست راست
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                class="w-4 h-4 text-white absolute bottom-1 left-1"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Received Message 3 (Typing indicator) -->
+        <div class="flex items-start">
+          <img
+            src="https://placehold.co/40x40/e0f2f1/26a69a?text=دکتر"
+            alt="Doctor Avatar"
+            class="w-10 h-10 rounded-full object-cover ml-3"
+          />
+          <div>
+            <div class="flex items-center mb-1">
+              <span class="text-sm font-semibold text-gray-800 ml-2"
+                >دکتر رضا شکری</span
+              >
+              <span class="text-xs text-gray-500">آنلاین</span>
+            </div>
+            <div
+              class="chat-bubble-received p-3 max-w-xs text-right text-gray-800"
+            >
+              <span class="animate-pulse">...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Input Area -->
+      <div
+        class="w-full p-4 flex items-center flex-row-reverse gap-4 border-t border-gray-200"
+      >
+        <button
+          class="bg-[#26a69a] text-white py-3 px-8 rounded-full font-semibold text-lg shadow-md hover:bg-[#208f83] transition duration-300 ease-in-out ml-3"
+        >
+          ارسال
+        </button>
+        <div class="relative flex-grow">
+          <input
+            type="text"
+            placeholder="تایپ کنید..."
+            class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right"
+          />
+          <button class="absolute inset-y-0 left-5 flex items-center pr-3">
+            <img
+              src="./icon/chat/Paperclip.svg"
+              alt="Attachment Icon"
+              class="w-6 h-6"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
