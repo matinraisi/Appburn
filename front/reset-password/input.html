@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سلامت همراه - فراموشی رمز عبور</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #e0f2f1; /* Light teal background for the whole page */
+      }
+      .segmented-control-button {
+        flex: 1;
+        padding: 16px;
+        border-radius: 24px; /* rounded-lg */
+        font-weight: 500; /* font-medium */
+        font-size: 16px; /* text-sm */
+        text-align: center;
+      }
+      .segmented-control-button.active {
+        background-color: #fff;
+        color: #199a8e;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06); /* shadow-md */
+      }
+      .segmented-control-button.inactive {
+        background-color: transparent;
+        color: #4b5563; /* text-gray-600 */
+        transition: background-color 0.2s ease;
+      }
+
+      .segmented-control-button.inactive:hover {
+        background-color: #f3f4f6; /* hover:bg-gray-100 */
+      }
+      .user-input::placeholder {
+        color: #ededed !important;
+      }
+
+      .input-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .input-icon-left {
+        left: 1rem; /* For icons on the left in RTL */
+      }
+      .input-icon-right {
+        right: 1rem; /* For icons on the right in RTL */
+      }
+    </style>
+  </head>
+  <body class="flex items-center justify-center min-h-screen">
+    <div
+      class="w-full h-screen flex gap-5 flex-col items-center p-6 bg-white sm:rounded-none lg:rounded-xl lg:shadow-lg lg:max-w-md lg:mx-auto lg:my-8 lg:p-8"
+    >
+      <!-- Top Bar -->
+      <div
+        class="w-full flex flex-row-reverse items-center justify-between mb-12"
+      >
+        <button
+          class="text-gray-600 hover:text-gray-800 transition duration-200"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+
+        <div></div>
+        <!-- Spacer for centering title -->
+      </div>
+
+      <h1 class="text-xl font-bold text-gray-800">
+        رمز عبور خود را فراموش کرده‌اید؟
+      </h1>
+      <!-- Instruction Text -->
+      <p class="text-gray-600 text-center mb-6">
+        ایمیل یا شماره تلفن خود را وارد کنید. کد تایید برای شما ارسال خواهد شد.
+      </p>
+
+      <!-- Tab Selector -->
+      <div
+        class="w-full p-1 bg-[#F9FAFB] rounded-full flex justify-between space-x-2 mb-6"
+      >
+        <button id="emailTabBtn" class="segmented-control-button active">
+          ایمیل
+        </button>
+        <button id="phoneTabBtn" class="segmented-control-button inactive">
+          شماره تماس
+        </button>
+      </div>
+
+      <!-- Input Field -->
+      <div class="user-input w-full relative mb-8">
+        <input
+          type="email"
+          id="resetInput"
+          placeholder="jamesschleifer@gmail.com"
+          class="w-full pl-12 pr-12 py-3.5 bg-[#F9FAFB] rounded-full border border-[#E5E7EB] focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right"
+        />
+        <div
+          id="inputLeftIcon"
+          class="input-icon input-icon-left text-green-500"
+        >
+          <img src="./icon/Email_active.svg" alt="" />
+        </div>
+        <div
+          id="inputRightIcon"
+          class="input-icon input-icon-right text-gray-400"
+        >
+          <img src="./icon/Email_active.svg" alt="" />
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <button
+        class="w-10/12 mx-auto bg-[#26a69a] text-white py-3 px-6 rounded-full font-semibold text-lg shadow-md hover:bg-[#208f83] transition duration-300 ease-in-out"
+      >
+        بازیابی رمز عبور
+      </button>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const emailTabBtn = document.getElementById("emailTabBtn");
+        const phoneTabBtn = document.getElementById("phoneTabBtn");
+        const resetInput = document.getElementById("resetInput");
+        const inputLeftIcon = document.getElementById("inputLeftIcon");
+        const inputRightIcon = document.getElementById("inputRightIcon");
+
+        // Function to update input field and icons based on selected tab
+        const updateInputForTab = (tabType) => {
+          if (tabType === "email") {
+            resetInput.type = "email";
+            resetInput.placeholder = "jamesschleifer@gmail.com";
+
+            inputLeftIcon.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    `;
+            inputLeftIcon.classList.add("text-green-500");
+            inputRightIcon.innerHTML = `
+                           <img src="./icon/Email_active.svg" alt="">
+                    `;
+            inputRightIcon.classList.remove("text-gray-400"); // Ensure consistent coloring
+          } else if (tabType === "phone") {
+            resetInput.type = "tel"; // 'tel' for phone numbers
+            resetInput.placeholder = "09123456789"; // Example phone number
+
+            inputLeftIcon.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    `;
+            inputLeftIcon.classList.add("text-green-500");
+            inputRightIcon.innerHTML = `
+                           <img src="./icon/Call_active.svg" alt="">
+                    `;
+            inputRightIcon.classList.remove("text-gray-400"); // Ensure consistent coloring
+          }
+        };
+
+        // Event listeners for tab buttons
+        emailTabBtn.addEventListener("click", () => {
+          emailTabBtn.classList.add("active");
+          emailTabBtn.classList.remove("inactive");
+          phoneTabBtn.classList.remove("active");
+          phoneTabBtn.classList.add("inactive");
+          updateInputForTab("email");
+        });
+
+        phoneTabBtn.addEventListener("click", () => {
+          phoneTabBtn.classList.add("active");
+          phoneTabBtn.classList.remove("inactive");
+          emailTabBtn.classList.remove("active");
+          emailTabBtn.classList.add("inactive");
+          updateInputForTab("phone");
+        });
+
+        // Initial state setup
+        updateInputForTab("email");
+      });
+    </script>
+  </body>
+</html>
