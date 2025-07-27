@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سلامت همراه - برنامه</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #e0f2f1; /* Light teal background for the whole page */
+      }
+      .segmented-control-button {
+        flex: 1;
+        padding-top: 0.5rem; /* py-2 */
+        padding-bottom: 0.5rem;
+        border-radius: 0.5rem; /* rounded-lg */
+        font-weight: 500; /* font-medium */
+        font-size: 0.875rem; /* text-sm */
+        text-align: center;
+      }
+      .segmented-control-button.active {
+        background-color: #26a69a;
+        color: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06); /* shadow-md */
+      }
+      .segmented-control-button.inactive {
+        background-color: transparent;
+        color: #4b5563; /* text-gray-600 */
+        transition: background-color 0.2s ease;
+      }
+
+      .segmented-control-button.inactive:hover {
+        background-color: #f3f4f6; /* hover:bg-gray-100 */
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <div
+      class="flex-grow w-full lg:max-w-md lg:mx-auto lg:my-8 lg:rounded-xl lg:shadow-lg bg-white overflow-hidden"
+    >
+      <!-- Top Bar -->
+      <div class="w-full flex items-center p-6 pb-4">
+        <h1 class="text-xl flex-grow text-center font-bold text-gray-800">
+          برنامه
+        </h1>
+        <button
+          class="text-gray-600 hover:text-gray-800 transition duration-200"
+        >
+          <img src="./icon/home/bell.svg" alt="" />
+        </button>
+      </div>
+
+      <!-- Segmented Control -->
+      <div class="p-4">
+        <div class="bg-gray-100 rounded-lg p-1 flex justify-between space-x-2">
+          <button class="segmented-control-button inactive">لغو شده</button>
+          <button class="segmented-control-button inactive">تکمیل شده</button>
+          <button class="segmented-control-button active">آینده</button>
+        </div>
+      </div>
+
+      <!-- Appointment Cards List -->
+      <div class="p-4 space-y-4">
+        <!-- Appointment Card 1 -->
+        <div class="bg-white rounded-xl shadow-sm p-4 border border-gray-200">
+          <div class="flex items-center justify-end mb-3">
+            <div class="flex-grow text-right">
+              <h2 class="text-lg font-semibold text-gray-800">
+                دکتر امید رحیمی
+              </h2>
+              <p class="text-sm text-gray-600">کارشناسان زخم</p>
+            </div>
+            <div class="flex-shrink-0 ml-3">
+              <img
+                src="https://placehold.co/60x60/e0f2f1/26a69a?text=دکتر"
+                alt="Doctor Avatar"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-between text-gray-500 text-sm mb-4"
+          >
+            <div class="flex items-center ml-4">
+              <span class="w-1.5 h-1.5 bg-[#7BEB78] rounded-full ml-1"></span>
+              <span class="ml-1">تایید شد</span>
+            </div>
+            <div class="flex gap-1 items-center ml-4">
+              <span class="ml-1">10:30 صبح</span>
+              <img src="./icon/chat/Time.svg" alt="" />
+            </div>
+            <div class="flex gap-1 items-center">
+              <span class="ml-1">1404/04/5</span>
+              <img src="./icon/chat/CalendarBlack.svg" alt="" />
+            </div>
+          </div>
+          <div class="flex space-x-3">
+            <button
+              class="flex-1 bg-gray-100 text-gray-700 py-2 rounded-lg font-semibold text-base hover:bg-gray-200 transition duration-200"
+            >
+              کنسل
+            </button>
+            <button
+              class="flex-1 bg-[#26a69a] text-white py-2 rounded-lg font-semibold text-base hover:bg-[#208f83] transition duration-200"
+            >
+              برنامه‌ریزی مجدد
+            </button>
+          </div>
+        </div>
+
+        <!-- Appointment Card 2 -->
+        <div class="bg-white rounded-xl shadow-sm p-4 border border-gray-200">
+          <div class="flex items-center justify-end mb-3">
+            <div class="flex-grow text-right">
+              <h2 class="text-lg font-semibold text-gray-800">
+                دکتر آیدا محمدی
+              </h2>
+              <p class="text-sm text-gray-600">روانشناس بالینی</p>
+            </div>
+            <div class="flex-shrink-0 ml-3">
+              <img
+                src="https://placehold.co/60x60/e0f2f1/26a69a?text=دکتر"
+                alt="Doctor Avatar"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-between text-gray-500 text-sm mb-4"
+          >
+            <div class="flex items-center ml-4">
+              <span class="w-1.5 h-1.5 bg-[#7BEB78] rounded-full ml-1"></span>
+              <span class="ml-1">تایید شد</span>
+            </div>
+            <div class="flex gap-1 items-center ml-4">
+              <span class="ml-1">10:30 صبح</span>
+              <img src="./icon/chat/Time.svg" alt="" />
+            </div>
+            <div class="flex gap-1 items-center">
+              <span class="ml-1">1404/04/5</span>
+              <img src="./icon/chat/CalendarBlack.svg" alt="" />
+            </div>
+          </div>
+          <div class="flex space-x-3">
+            <button
+              class="flex-1 bg-gray-100 text-gray-700 py-2 rounded-lg font-semibold text-base hover:bg-gray-200 transition duration-200"
+            >
+              کنسل
+            </button>
+            <button
+              class="flex-1 bg-[#26a69a] text-white py-2 rounded-lg font-semibold text-base hover:bg-[#208f83] transition duration-200"
+            >
+              برنامه‌ریزی مجدد
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom Navigation -->
+    <div
+      class="fixed left-1/2 transform -translate-x-1/2 bottom-0 w-full lg:max-w-md lg:mx-auto bg-white border-t border-gray-200 p-4 flex justify-around items-center shadow-lg"
+    >
+      <!-- <div
+        class="absolute -top-1/2 left-2 flex items-center justify-center shadow-sm w-12 h-12 bg-teal-600 rounded-full"
+      >
+        <img src="./icon/nav/Chat.svg" alt="" />
+      </div> -->
+      <img src="./icon/nav/messagehistory/Home.svg" alt="" />
+      <img src="./icon/nav/Message.svg" alt="" />
+      <img src="./icon/chat/Calendar.svg" alt="" />
+      <img src="./icon/nav/Profile.svg" alt="" />
+    </div>
+  </body>
+</html>

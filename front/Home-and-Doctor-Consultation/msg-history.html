@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سلامت همراه - پیام‌ها</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #e0f2f1; /* Light teal background for the whole page */
+      }
+      .segmented-control-button {
+        flex: 1;
+        padding-top: 0.5rem; /* py-2 */
+        padding-bottom: 0.5rem;
+        border-radius: 0.5rem; /* rounded-lg */
+        font-weight: 500; /* font-medium */
+        font-size: 0.875rem; /* text-sm */
+        text-align: center;
+      }
+      .segmented-control-button.active {
+        background-color: #26a69a;
+        color: white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06); /* shadow-md */
+      }
+
+      .segmented-control-button.inactive {
+        background-color: transparent;
+        color: #4b5563; /* text-gray-600 */
+        transition: background-color 0.2s ease;
+      }
+
+      .segmented-control-button.inactive:hover {
+        background-color: #f3f4f6; /* hover:bg-gray-100 */
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <div
+      class="flex-grow w-full lg:max-w-md lg:mx-auto lg:my-8 lg:rounded-xl lg:shadow-lg bg-white overflow-hidden"
+    >
+      <!-- Top Bar -->
+      <div class="w-full flex items-center justify-between p-6 pb-4">
+        <h1 class="text-xl font-bold text-gray-800">پیام</h1>
+        <button
+          class="text-gray-600 hover:text-gray-800 transition duration-200"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Segmented Control -->
+      <div class="p-4">
+        <div class="bg-gray-100 rounded-lg p-1 flex justify-between space-x-2">
+          <button class="segmented-control-button active">همه</button>
+          <button class="segmented-control-button inactive">
+            کارشناسان زخم
+          </button>
+          <button class="segmented-control-button inactive">
+            روانشناسان بالینی
+          </button>
+        </div>
+      </div>
+
+      <!-- Messages List -->
+      <div class="p-4 space-y-4">
+        <!-- Message Card 1 -->
+        <div
+          class="flex items-center bg-white rounded-xl shadow-sm p-4 border border-gray-200"
+        >
+          <div class="flex-shrink-0 ml-4">
+            <img
+              src="https://placehold.co/60x60/e0f2f1/26a69a?text=دکتر"
+              alt="Doctor Avatar"
+              class="w-16 h-16 rounded-full object-cover"
+            />
+          </div>
+          <div class="flex-grow text-right">
+            <h2 class="text-lg font-semibold text-gray-800">دکتر امید رحیمی</h2>
+            <p class="text-sm text-gray-600 line-clamp-1">
+              ممنون میشوم اگر بگویید سوختگی در چه ناحیه ای است.
+            </p>
+          </div>
+          <div class="flex flex-col items-end flex-shrink-0 mr-4">
+            <span class="text-xs text-gray-500 mb-1">10:24</span>
+            <span
+              class="bg-[#26a69a] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
+              >1</span
+            >
+          </div>
+        </div>
+
+        <!-- Message Card 2 -->
+        <div
+          class="flex items-center bg-white rounded-xl shadow-sm p-4 border border-gray-200"
+        >
+          <div class="flex-shrink-0 ml-4">
+            <img
+              src="https://placehold.co/60x60/e0f2f1/26a69a?text=دکتر"
+              alt="Doctor Avatar"
+              class="w-16 h-16 rounded-full object-cover"
+            />
+          </div>
+          <div class="flex-grow text-right">
+            <h2 class="text-lg font-semibold text-gray-800">دکتر آیدا محمدی</h2>
+            <p class="text-sm text-gray-600">
+              سلام، چطور می‌توانم به شما کمک کنم؟
+            </p>
+          </div>
+          <div class="flex flex-col items-end flex-shrink-0 mr-4">
+            <span class="text-xs text-gray-500 mb-1">09:04</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="w-4 h-4 text-gray-400"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Message Card 3 -->
+        <div
+          class="flex items-center bg-white rounded-xl shadow-sm p-4 border border-gray-200"
+        >
+          <div class="flex-shrink-0 ml-4">
+            <img
+              src="https://placehold.co/60x60/e0f2f1/26a69a?text=دکتر"
+              alt="Doctor Avatar"
+              class="w-16 h-16 rounded-full object-cover"
+            />
+          </div>
+          <div class="flex-grow text-right">
+            <h2 class="text-lg font-semibold text-gray-800">دکتر مریم حمیدی</h2>
+            <p class="text-sm text-gray-600">آیا تب دارید؟</p>
+          </div>
+          <div class="flex flex-col items-end flex-shrink-0 mr-4">
+            <span class="text-xs text-gray-500 mb-1">08:57</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="w-4 h-4 text-gray-400"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div
+      class="fixed left-1/2 transform -translate-x-1/2 bottom-0 w-full lg:max-w-md lg:mx-auto bg-white border-t border-gray-200 p-4 flex flex-row-reverse justify-around items-center shadow-lg"
+    >
+      <div
+        class="absolute -top-16 right-4 flex items-center justify-center shadow-lg w-12 h-12 bg-teal-600 rounded-full"
+      >
+        <img src="./icon/nav/Chat.svg" alt="" />
+      </div>
+      <img src="./icon/nav/messagehistory/Home.svg" alt="" />
+      <img src="./icon/nav/messagehistory/Message.svg" alt="" />
+      <img src="./icon/nav/Calendar.svg" alt="" />
+      <img src="./icon/nav/Profile.svg" alt="" />
+    </div>
+  </body>
+</html>
