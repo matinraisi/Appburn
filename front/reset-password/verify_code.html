@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سلامت همراه - وارد کردن کد تایید</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://v1.fontapi.ir/css/Yekan");
+
+      body {
+        background-color: #e0f2f1; /* Light teal background for the whole page */
+      }
+      .code-input {
+        width: 4rem; /* w-16 => 64px */
+        height: 4rem; /* h-16 => 64px */
+        text-align: center; /* text-center */
+        font-size: 1.5rem; /* text-2xl => 24px */
+        font-weight: 700; /* font-bold */
+        border: 1px solid #d1d5db; /* border-gray-300 */
+        border-radius: 0.5rem; /* rounded-lg */
+        outline: none; /* focus:outline-none */
+      }
+
+      .code-input:focus {
+        box-shadow: 0 0 0 2px #26a69a; /* focus:ring-2 focus:ring-[#26a69a] */
+        border-color: transparent; /* optional: hide native border under ring */
+      }
+    </style>
+  </head>
+  <body class="flex items-center justify-center min-h-screen">
+    <div
+      class="w-full h-screen flex flex-col items-center p-6 bg-white sm:rounded-none lg:rounded-xl lg:shadow-lg lg:max-w-md lg:mx-auto lg:my-8 lg:p-8"
+    >
+      <!-- Top Bar -->
+      <div class="w-full flex-row-reverse flex items-center justify-start mb-8">
+        <button
+          class="text-gray-600 hover:text-gray-800 transition duration-200"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
+        </button>
+        <!-- No title in top bar based on design, just back button -->
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex flex-col items-center text-center px-4">
+        <h1 class="text-xl font-bold text-gray-800 mb-4">
+          کد تایید را وارد کنید
+        </h1>
+        <p class="text-gray-600 leading-relaxed mb-2">
+          کدی را که به شماره شما ارسال شده است وارد کنید
+        </p>
+        <p class="text-gray-800 font-semibold text-lg mb-8">***08528188</p>
+      </div>
+
+      <!-- Code Input Fields -->
+      <div class="w-full flex justify-center space-x-3 mb-8" dir="ltr">
+        <!-- dir="ltr" for LTR input fields -->
+        <input type="text" maxlength="1" class="code-input" />
+        <input type="text" maxlength="1" class="code-input" />
+        <input type="text" maxlength="1" class="code-input" />
+        <input type="text" maxlength="1" class="code-input" />
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        class="w-full bg-[#26a69a] text-white py-4 px-6 rounded-full font-semibold text-lg shadow-md hover:bg-[#208f83] transition duration-300 ease-in-out mb-6"
+      >
+        تایید
+      </button>
+
+      <!-- Resend Code Link -->
+      <p class="text-gray-600 text-center text-sm">
+        کد را دریافت نکردید؟
+        <a href="#" class="text-[#26a69a] font-medium hover:underline"
+          >دوباره ارسال کنید</a
+        >
+      </p>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const codeInputs = document.querySelectorAll(".code-input");
+        function isAllFilledAndValid() {
+          return Array.from(codeInputs).every((input) =>
+            /^[0-9]$/.test(input.value)
+          );
+        }
+        function updateInputStyles() {
+          if (isAllFilledAndValid()) {
+            codeInputs.forEach((input) => {
+              input.classList.add("border-2", "border-[#26a69a]", "rounded-xl");
+            });
+          } else {
+            codeInputs.forEach((input) => {
+              input.classList.remove(
+                "border-2",
+                "border-[#26a69a]",
+                "rounded-xl"
+              );
+            });
+          }
+        }
+        codeInputs.forEach((input) => {
+          input.addEventListener("input", function () {
+            // Only allow one digit
+            this.value = this.value.replace(/[^0-9]/g, "").slice(0, 1);
+            updateInputStyles();
+            // Auto-focus next input
+            if (
+              this.value &&
+              this.nextElementSibling &&
+              this.nextElementSibling.classList.contains("code-input")
+            ) {
+              this.nextElementSibling.focus();
+            }
+          });
+          input.addEventListener("paste", function (e) {
+            const paste = (e.clipboardData || window.clipboardData).getData(
+              "text"
+            );
+            if (/^[0-9]{4}$/.test(paste)) {
+              codeInputs.forEach((input, i) => {
+                input.value = paste[i] || "";
+              });
+              updateInputStyles();
+              e.preventDefault();
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
