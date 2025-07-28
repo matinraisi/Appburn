@@ -68,28 +68,26 @@
 
       <!-- Input Fields -->
       <div class="w-full space-y-4 mb-6">
+        <!-- Email Input -->
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="jamesschleifer@gmail.com"
+            class="w-full pl-4 pr-12 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right email-input"
+          />
+          <div class="input-icon input-icon-right text-gray-400 email-icon">
+            <img src="./icon/Email_notactive.svg" alt="" />
+          </div>
+        </div>
         <!-- Phone Number Input -->
         <div class="relative">
           <input
             type="text"
             placeholder="شماره تماس"
-            class="w-full pl-4 pr-12 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right"
+            class="w-full pl-4 pr-12 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right phone-input"
           />
-          <div class="input-icon input-icon-right text-gray-400">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.18.44l-1.417 1.914a4.995 4.995 0 01-1.706-0.535 4.995 4.995 0 01-1.706-0.535l-1.417-1.914c-.278-.385-.74-.55-1.18-.44L3.052 14.24c-.501.125-.852.575-.852 1.091V17.25a2.25 2.25 0 002.25 2.25h2.25a4.5 4.5 0 004.5-4.5V9a4.5 4.5 0 00-4.5-4.5H4.5A2.25 2.25 0 002.25 6.75z"
-              />
-            </svg>
+          <div class="input-icon input-icon-right text-gray-400 phone-icon">
+            <img src="./icon/Call_notactive.svg" alt="" />
           </div>
         </div>
 
@@ -98,23 +96,10 @@
           <input
             type="password"
             placeholder="رمز خود را وارد کنید"
-            class="w-full pl-4 pr-12 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right"
+            class="w-full pl-4 pr-12 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#26a69a] text-right password-input"
           />
-          <div class="input-icon input-icon-right text-gray-400">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
-              />
-            </svg>
+          <div class="input-icon input-icon-right text-gray-400 password-icon">
+            <img src="./icon/lock_notactive.svg" alt="" />
           </div>
         </div>
 
@@ -187,14 +172,14 @@
       </p>
 
       <!-- OR Divider -->
-      <div class="relative w-full flex items-center justify-center mb-6">
+      <!-- <div class="relative w-full flex items-center justify-center mb-6">
         <div class="flex-grow border-t border-[#A1A8B0]"></div>
         <span class="px-4 text-[#A1A8B0] text-sm">OR</span>
         <div class="flex-grow border-t border-[#A1A8B0]"></div>
-      </div>
+      </div> -->
 
       <!-- Social Login Buttons -->
-      <div class="w-full space-y-4 mb-8 social-btns">
+      <!-- <div class="w-full space-y-4 mb-8 social-btns">
         <button
           class="w-full flex items-center justify-center border border-gray-300 py-3 px-6 rounded-full font-bold text-gray-700 hover:bg-gray-50 transition duration-300 ease-in-out"
         >
@@ -217,7 +202,56 @@
           />
           Sign in with Facebook
         </button>
-      </div>
+      </div> -->
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Email validation
+        function validateEmail(email) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+        // Phone validation (Iranian)
+        function validatePhone(phone) {
+          return /^09\d{9}$/.test(phone);
+        }
+        // Password validation (at least 8 chars, contains a number and a letter)
+        function validatePassword(pw) {
+          return pw.length >= 8 && /[A-Za-z]/.test(pw) && /[0-9]/.test(pw);
+        }
+
+        // Email
+        const emailInput = document.querySelector(".email-input");
+        const emailIcon = document.querySelector(".email-icon img");
+        emailInput.addEventListener("input", function () {
+          if (validateEmail(emailInput.value)) {
+            emailIcon.src = "./icon/Email_active.svg";
+          } else {
+            emailIcon.src = "./icon/Email_notactive.svg";
+          }
+        });
+
+        // Phone
+        const phoneInput = document.querySelector(".phone-input");
+        const phoneIcon = document.querySelector(".phone-icon img");
+        phoneInput.addEventListener("input", function () {
+          if (validatePhone(phoneInput.value)) {
+            phoneIcon.src = "./icon/Call_active.svg";
+          } else {
+            phoneIcon.src = "./icon/Call_notactive.svg";
+          }
+        });
+
+        // Password
+        const passwordInput = document.querySelector(".password-input");
+        const passwordIcon = document.querySelector(".password-icon img");
+        passwordInput.addEventListener("input", function () {
+          if (validatePassword(passwordInput.value)) {
+            passwordIcon.src = "./icon/lock.svg";
+          } else {
+            passwordIcon.src = "./icon/lock_notactive.svg";
+          }
+        });
+      });
+    </script>
   </body>
 </html>
