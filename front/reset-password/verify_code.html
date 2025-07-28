@@ -14,6 +14,7 @@
       @import url("https://v1.fontapi.ir/css/Yekan");
 
       body {
+        font-family: "Yekan", sans-serif;
         background-color: #e0f2f1; /* Light teal background for the whole page */
       }
       .code-input {
@@ -88,9 +89,14 @@
       </button>
 
       <!-- Resend Code Link -->
-      <p class="text-gray-600 text-center text-sm">
+      <p class="text-gray-600 text-center text-sm" id="resend-container">
         کد را دریافت نکردید؟
-        <a href="#" class="text-[#26a69a] font-medium hover:underline"
+        <span id="timer" class="text-[#26a69a] font-medium"></span>
+        <a
+          href="#"
+          id="resend-link"
+          class="text-[#26a69a] font-medium hover:underline"
+          style="display: none"
           >دوباره ارسال کنید</a
         >
       </p>
@@ -144,6 +150,46 @@
               e.preventDefault();
             }
           });
+        });
+
+        var timerSpan = document.getElementById("timer");
+        var resendLink = document.getElementById("resend-link");
+        var duration = 120; // 2 minutes in seconds
+        var remaining = duration;
+        function updateTimer() {
+          var min = Math.floor(remaining / 60);
+          var sec = remaining % 60;
+          timerSpan.textContent = `(${min}:${sec.toString().padStart(2, "0")})`;
+        }
+        updateTimer();
+        var interval = setInterval(function () {
+          remaining--;
+          if (remaining > 0) {
+            updateTimer();
+          } else {
+            clearInterval(interval);
+            timerSpan.style.display = "none";
+            resendLink.style.display = "inline";
+          }
+        }, 1000);
+        resendLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          // Optionally, trigger resend logic here
+          // Reset timer
+          remaining = duration;
+          timerSpan.style.display = "inline";
+          resendLink.style.display = "none";
+          updateTimer();
+          interval = setInterval(function () {
+            remaining--;
+            if (remaining > 0) {
+              updateTimer();
+            } else {
+              clearInterval(interval);
+              timerSpan.style.display = "none";
+              resendLink.style.display = "inline";
+            }
+          }, 1000);
         });
       });
     </script>
