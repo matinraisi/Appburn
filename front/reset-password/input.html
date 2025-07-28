@@ -117,13 +117,13 @@
           id="inputLeftIcon"
           class="input-icon input-icon-left text-green-500"
         >
-          <img src="./icon/Email_active.svg" alt="" />
+          <img src="./icon/Check.svg" alt="" />
         </div>
         <div
           id="inputRightIcon"
           class="input-icon input-icon-right text-gray-400"
         >
-          <img src="./icon/Email_active.svg" alt="" />
+          <img src="./icon/Email_notactive.svg" alt="" />
         </div>
       </div>
 
@@ -143,38 +143,50 @@
         const inputLeftIcon = document.getElementById("inputLeftIcon");
         const inputRightIcon = document.getElementById("inputRightIcon");
 
-        // Function to update input field and icons based on selected tab
-        const updateInputForTab = (tabType) => {
+        let currentTab = "email";
+
+        // Validation functions
+        function validateEmail(email) {
+          // Simple email regex
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+        function validatePhone(phone) {
+          // Simple Iranian phone number validation (starts with 09 and 11 digits)
+          return /^09\d{9}$/.test(phone);
+        }
+
+        // Function to update input field and icons based on selected tab and validity
+        function updateIcons() {
+          let isValid = false;
+          if (currentTab === "email") {
+            isValid = validateEmail(resetInput.value);
+            inputRightIcon.innerHTML = `<img src="./icon/${
+              isValid ? "Email_active" : "Email_notactive"
+            }.svg" alt="">`;
+          } else {
+            isValid = validatePhone(resetInput.value);
+            inputRightIcon.innerHTML = `<img src="./icon/${
+              isValid ? "Call_active" : "Call_notactive"
+            }.svg" alt="">`;
+          }
+          inputLeftIcon.innerHTML = isValid
+            ? `<img src="./icon/Check.svg" alt="">`
+            : ""; // Hide tick if not valid
+        }
+
+        // Function to update input for tab switch
+        function updateInputForTab(tabType) {
+          currentTab = tabType;
+          resetInput.value = "";
           if (tabType === "email") {
             resetInput.type = "email";
             resetInput.placeholder = "jamesschleifer@gmail.com";
-
-            inputLeftIcon.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    `;
-            inputLeftIcon.classList.add("text-green-500");
-            inputRightIcon.innerHTML = `
-                           <img src="./icon/Email_active.svg" alt="">
-                    `;
-            inputRightIcon.classList.remove("text-gray-400"); // Ensure consistent coloring
-          } else if (tabType === "phone") {
-            resetInput.type = "tel"; // 'tel' for phone numbers
-            resetInput.placeholder = "09123456789"; // Example phone number
-
-            inputLeftIcon.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    `;
-            inputLeftIcon.classList.add("text-green-500");
-            inputRightIcon.innerHTML = `
-                           <img src="./icon/Call_active.svg" alt="">
-                    `;
-            inputRightIcon.classList.remove("text-gray-400"); // Ensure consistent coloring
+          } else {
+            resetInput.type = "tel";
+            resetInput.placeholder = "09123456789";
           }
-        };
+          updateIcons();
+        }
 
         // Event listeners for tab buttons
         emailTabBtn.addEventListener("click", () => {
@@ -192,6 +204,9 @@
           emailTabBtn.classList.add("inactive");
           updateInputForTab("phone");
         });
+
+        // Listen for input changes
+        resetInput.addEventListener("input", updateIcons);
 
         // Initial state setup
         updateInputForTab("email");
